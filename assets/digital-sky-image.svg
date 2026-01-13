@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <radialGradient id="digital" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#312e81;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Digital background -->
+  <rect width="400" height="300" fill="url(#digital)"/>
+
+  <!-- Data streams -->
+  <path d="M50 100 Q100 80 150 100 T250 100 T350 100" stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M50 150 Q100 130 150 150 T250 150 T350 150" stroke="#10b981" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M50 200 Q100 180 150 200 T250 200 T350 200" stroke="#f59e0b" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Data nodes -->
+  <circle cx="100" cy="100" r="8" fill="#3b82f6"/>
+  <circle cx="200" cy="100" r="8" fill="#3b82f6"/>
+  <circle cx="300" cy="100" r="8" fill="#3b82f6"/>
+  <circle cx="100" cy="150" r="8" fill="#10b981"/>
+  <circle cx="200" cy="150" r="8" fill="#10b981"/>
+  <circle cx="300" cy="150" r="8" fill="#10b981"/>
+  <circle cx="100" cy="200" r="8" fill="#f59e0b"/>
+  <circle cx="200" cy="200" r="8" fill="#f59e0b"/>
+  <circle cx="300" cy="200" r="8" fill="#f59e0b"/>
+
+  <!-- Central hub -->
+  <circle cx="200" cy="150" r="30" fill="#6366f1" opacity="0.8"/>
+  <circle cx="200" cy="150" r="20" fill="#8b5cf6" opacity="0.9"/>
+  <text x="200" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="bold">AI</text>
+
+  <!-- Connection lines to central hub -->
+  <line x1="100" y1="100" x2="185" y2="135" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
+  <line x1="200" y1="108" x2="200" y2="130" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
+  <line x1="300" y1="100" x2="215" y2="135" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
+  <line x1="100" y1="150" x2="180" y2="150" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <line x1="300" y1="150" x2="220" y2="150" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <line x1="100" y1="200" x2="185" y2="165" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
+  <line x1="200" y1="192" x2="200" y2="170" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
+  <line x1="300" y1="200" x2="215" y2="165" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
+
+  <!-- Drones in network -->
+  <g transform="translate(80, 80)">
+    <ellipse cx="0" cy="0" rx="12" ry="5" fill="#374151"/>
+    <circle cx="-15" cy="-3" r="3" fill="#6b7280"/>
+    <circle cx="15" cy="-3" r="3" fill="#6b7280"/>
+  </g>
+
+  <g transform="translate(320, 120)">
+    <ellipse cx="0" cy="0" rx="12" ry="5" fill="#374151"/>
+    <circle cx="-15" cy="-3" r="3" fill="#6b7280"/>
+    <circle cx="15" cy="-3" r="3" fill="#6b7280"/>
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Digital Sky</text>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">AI-Powered Airspace Management</text>
+</svg>

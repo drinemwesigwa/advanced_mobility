@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="building" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e5e7eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9ca3af;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="platform" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#374151;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="400" height="300" fill="#87CEEB"/>
+
+  <!-- Building structure -->
+  <rect x="120" y="150" width="160" height="120" fill="url(#building)"/>
+  <rect x="140" y="130" width="120" height="20" fill="url(#building)"/>
+  <rect x="160" y="110" width="80" height="20" fill="url(#building)"/>
+
+  <!-- Windows -->
+  <rect x="150" y="170" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="175" y="170" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="200" y="170" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="225" y="170" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="150" y="200" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="175" y="200" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="200" y="200" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+  <rect x="225" y="200" width="15" height="20" fill="#3b82f6" opacity="0.8"/>
+
+  <!-- Landing platform -->
+  <rect x="100" y="270" width="200" height="15" fill="url(#platform)"/>
+  <rect x="120" y="255" width="160" height="15" fill="url(#platform)"/>
+  <circle cx="200" cy="262" r="25" fill="#ef4444" opacity="0.8"/>
+  <text x="200" y="268" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">H</text>
+
+  <!-- Landing pad markings -->
+  <circle cx="200" cy="270" r="30" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="200" cy="270" r="20" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <line x1="170" y1="270" x2="190" y2="270" stroke="#ffffff" stroke-width="2"/>
+  <line x1="210" y1="270" x2="230" y2="270" stroke="#ffffff" stroke-width="2"/>
+  <line x1="200" y1="240" x2="200" y2="260" stroke="#ffffff" stroke-width="2"/>
+  <line x1="200" y1="280" x2="200" y2="300" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Drone approaching -->
+  <g transform="translate(250, 100)">
+    <ellipse cx="0" cy="0" rx="20" ry="8" fill="#374151"/>
+    <circle cx="-25" cy="-5" r="4" fill="#6b7280"/>
+    <circle cx="25" cy="-5" r="4" fill="#6b7280"/>
+    <circle cx="-25" cy="5" r="4" fill="#6b7280"/>
+    <circle cx="25" cy="5" r="4" fill="#6b7280"/>
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2937">VertiHub</text>
+  <text x="200" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#374151">Urban Landing Infrastructure</text>
+</svg>
