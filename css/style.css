@@ -1490,6 +1490,15 @@ footer {
     gap: 2rem;
     margin-bottom: 3rem;
     border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+    .fleet-tabs {
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+    }
 }
 
 .tab-button {
@@ -1619,6 +1628,13 @@ footer {
     flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+    .fleet-stats {
+        gap: 1rem;
+        padding-top: 2rem;
+    }
+}
+
 .fleet-stat {
     width: 180px;
     height: 180px;
@@ -1633,6 +1649,13 @@ footer {
     flex-shrink: 0;
 }
 
+@media (max-width: 768px) {
+    .fleet-stat {
+        width: 120px;
+        height: 120px;
+    }
+}
+
 .fleet-stat .stat-number {
     font-size: 2.2rem;
     font-weight: 700;
@@ -1642,9 +1665,21 @@ footer {
     display: block;
 }
 
+@media (max-width: 768px) {
+    .fleet-stat .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
 .fleet-stat .stat-label {
     font-size: 0.8rem;
     color: #0a0000ca;
     font-weight: 300;
     line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .fleet-stat .stat-label {
+        font-size: 0.7rem;
+    }
 }
