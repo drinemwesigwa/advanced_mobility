@@ -1685,6 +1685,16 @@ footer {
     flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+    .fleet-stats {
+        gap: 1rem;
+    }
+    .fleet-stat {
+        width: 120px;
+        height: 120px;
+    }
+}
+
 .fleet-stat {
     width: 180px;
     height: 180px;
@@ -1697,6 +1707,13 @@ footer {
     text-align: center;
     margin: 0 auto;
     flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .fleet-stat {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 .fleet-stat .stat-number {
