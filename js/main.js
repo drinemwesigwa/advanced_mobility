@@ -113,24 +113,44 @@ function closeMobileMenu() {
 function initFleetTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
+    const fleetSelect = document.getElementById('fleet-select');
+
+    function switchTab(tabId) {
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to corresponding button
+        const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+
+        // Update select value
+        if (fleetSelect) {
+            fleetSelect.value = tabId;
+        }
+
+        // Show corresponding content
+        const targetContent = document.getElementById(tabId);
+        if (targetContent) {
+            targetContent.classList.add('active');
+        }
+    }
 
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons and contents
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            // Show corresponding content
             const tabId = button.getAttribute('data-tab');
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
+            switchTab(tabId);
         });
     });
+
+    if (fleetSelect) {
+        fleetSelect.addEventListener('change', () => {
+            const tabId = fleetSelect.value;
+            switchTab(tabId);
+        });
+    }
 }
 
 // Scroll animations

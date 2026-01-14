@@ -871,12 +871,22 @@ header {
 
     .cta-form {
         max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .form-row {
+        gap: 1.5rem;
     }
 
     .form-group select,
     .form-group input,
     .form-group textarea {
         font-size: 16px; /* Prevent zoom on iOS */
+        padding: 1rem;
+    }
+
+    .form-group textarea {
+        min-height: 120px;
     }
 }
 
@@ -1496,9 +1506,30 @@ footer {
 
 @media (max-width: 640px) {
     .fleet-tabs {
-        gap: 1rem;
-        padding-bottom: 0.5rem;
+        display: none;
     }
+}
+
+.fleet-mobile-select {
+    display: none;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 640px) {
+    .fleet-mobile-select {
+        display: block;
+    }
+}
+
+.fleet-mobile-select select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--foreground);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .tab-button {
