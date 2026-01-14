@@ -404,6 +404,12 @@ header {
     flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+    .trusted-logos {
+        gap: 1rem;
+    }
+}
+
 .trusted-logo {
     font-size: 0.875rem;
     font-weight: 600;
@@ -652,6 +658,12 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .domains-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .domain-card {
@@ -1492,6 +1504,12 @@ footer {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .partners-logos {
+        gap: 1rem;
+    }
+}
+
 @media (min-width: 1024px) {
     .partners-logos {
         order: 2;
@@ -1525,6 +1543,19 @@ footer {
     gap: 2rem;
     margin-bottom: 3rem;
     border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+    .fleet-tabs {
+        gap: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .fleet-tabs::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .tab-button {
