@@ -764,6 +764,13 @@ header {
     order: 1;
 }
 
+.proven-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+}
+
 @media (min-width: 1024px) {
     .proven-image {
         order: 2;
