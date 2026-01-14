@@ -297,6 +297,9 @@ header {
 .hero {
     padding: 4rem 0 2rem;
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .hero-content {
@@ -379,7 +382,9 @@ header {
 .trusted-partners {
     padding: 2rem 0;
     background: var(--white);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .trusted-header {
@@ -427,6 +432,9 @@ header {
 .company-story {
     padding: 4rem 0;
     background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .story-content {
@@ -503,6 +511,9 @@ header {
 .stats {
     padding: 3rem 0;
     background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .stats-grid {
@@ -539,6 +550,9 @@ header {
 .network {
     padding: 4rem 0;
     background: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .section-header {
@@ -652,6 +666,9 @@ header {
 .domains {
     padding: 4rem 0;
     background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .domains-grid {
@@ -727,6 +744,9 @@ header {
 .proven {
     padding: 4rem 0;
     background: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .proven-content {
@@ -793,6 +813,9 @@ header {
 .marketing {
     padding: 4rem 0;
     background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .marketing-video video {
@@ -816,6 +839,9 @@ header {
     background: var(--background);
     color: var(--foreground);
     text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .cta-content {
@@ -1275,6 +1301,9 @@ footer {
 .industry-applications {
     padding: 4rem 0;
     background: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .applications-grid {
@@ -1458,6 +1487,9 @@ footer {
 .partners {
     padding: 4rem 0;
     background: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .partners-content {
@@ -1530,6 +1562,9 @@ footer {
 .fleet-explorer {
     padding: 4rem 0;
     background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
 }
 
 .fleet-header {
