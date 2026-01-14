@@ -372,6 +372,7 @@ header {
     height: auto;
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
+    object-fit: contain;
 }
 
 /* Trusted Partners Section */
@@ -429,6 +430,13 @@ header {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 .story-visual img {
     width: 100%;
     height: auto;
@@ -441,6 +449,7 @@ header {
     height: auto;
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
+    object-fit: contain;
 }
 
 .story-text {
@@ -767,6 +776,12 @@ header {
     display: block;
     border-radius: 8px;
     object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .marketing-video video {
+        max-height: none;
+    }
 }
 
 /* CTA Section */
