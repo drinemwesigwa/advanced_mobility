@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <video src="assets/wakri.mp4" autoplay muted loop></video>
+                    <video src="assets/wakri.mp4" autoplay muted loop loading="lazy"></video>
                     <!-- <video src="assets/space-falcon-long-range-mission-drone.mp4" autoplay muted loop></video> -->
                 </div>
             </div>
@@ -138,7 +138,7 @@
         <div class="container">
             <div class="story-content">
                 <div class="story-visual">
-                    <video src="assets/heavy-cargo-drone.mp4" autoplay muted loop></video>
+                    <video src="assets/heavy-cargo-drone.mp4" autoplay muted loop loading="lazy"></video>
                 </div>
                 <div class="story-text">
                     <h2 class="story-title">OUR STORY</h2>
@@ -504,91 +504,41 @@
     <!-- Proven Technology Section -->
     <section class="proven">
         <div class="container">
-            <div class="proven-content">
-                <div class="proven-text">
-                    <h2 class="section-title" data-i18n="proven_title">Proven Technology</h2>
-                    <p class="section-subtitle" data-i18n="proven_subtitle">Enterprise-grade autonomous systems built
-                        for reliability</p>
-                    <div class="proven-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M9 12l2 2 4-4" />
-                                    <circle cx="12" cy="12" r="9" />
-                                </svg>
-                            </div>
-                            <div class="feature-content">
-                                <h4>AI Navigation</h4>
-                                <p>Advanced machine learning algorithms for optimal route planning and obstacle
-                                    avoidance</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Safety First</h4>
-                                <p>Redundant systems and real-time monitoring ensure 99.8% success rate</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" />
-                                    <path d="M8 5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2H8V5z" />
-                                </svg>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Sustainable</h4>
-                                <p>Electric-powered fleet reduces carbon emissions by 95% vs traditional delivery</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="proven-image">
-                    <!-- <img src="assets/technology-showcase.svg" alt="Advanced Flight Control System" loading="lazy"> -->
-                    <img src="assets/Wings.png" alt="Urban Air Mobility" class="domain-image" loading="lazy">
-
-                </div>
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="proven_title">Proven Technology</h2>
+                <p class="section-subtitle" data-i18n="proven_subtitle">Enterprise-grade autonomous systems built for reliability</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Technology Partners Section -->
-    <section class="partners">
-        <div class="container">
-            <div class="partners-content">
-                <div class="partners-text">
-                    <h2 class="section-title">Built With Global Leaders</h2>
-                    <p class="section-subtitle">Multi-OEM fleet. Technology partnerships. Regulatory alignment.</p>
-                    <div class="partners-buttons">
-                        <a href="#" class="btn btn-primary">Become a Partner</a>
-                        <a href="#" class="btn btn-outline">Download Partnership Overview</a>
+            <div class="proven-features">
+                <div class="feature-item">
+                    <div class="feature-icon-box">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 12l3 3 5-6" />
+                        </svg>
                     </div>
+                    <h3>AI Navigation</h3>
+                    <p>Advanced machine learning algorithms for optimal route planning and obstacle avoidance</p>
                 </div>
-                <div class="partners-logos">
-                    <div class="partner-logo">
-                        <span>EHang</span>
+                <div class="feature-item">
+                    <div class="feature-icon-box">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
                     </div>
-                    <div class="partner-logo">
-                        <span>Feiping</span>
+                    <h3>Safety First</h3>
+                    <p>Redundant systems and real-time monitoring ensure 99.8% success rate</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-box">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                        </svg>
                     </div>
-                    <div class="partner-logo">
-                        <span>GOVY</span>
-                    </div>
-                    <div class="partner-logo">
-                        <span>YG</span>
-                    </div>
-                    <div class="partner-logo">
-                        <span>CAA Pathway</span>
-                    </div>
+                    <h3>Sustainable</h3>
+                    <p>Electric-powered fleet reduces carbon emissions by 95% vs traditional delivery</p>
                 </div>
             </div>
         </div>
@@ -733,7 +683,7 @@
                 <h2 class="section-title">Marketing</h2>
             </div>
             <div class="marketing-video">
-                <video src="assets/marketing-5-passengers.mp4" autoplay muted loop></video>
+                <video src="assets/marketing-5-passengers.mp4" autoplay muted loop loading="lazy"></video>
             </div>
         </div>
     </section>
