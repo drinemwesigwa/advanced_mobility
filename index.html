@@ -200,17 +200,10 @@
                     <h3>VertiHub</h3>
                     <p>Physical infrastructure and landing ports providing the foundation for advanced air mobility.</p>
                 </div>
+              
                 <div class="domain-card">
-                    <img src="assets/digital-sky-image.svg" alt="AI-Powered Airspace Management" class="domain-image"
+                      <img src="assets/advanced-mobility-logo.png" alt="Urban Landing Infrastructure" class="domain-image"
                         loading="lazy">
-                    <div class="domain-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                            <path d="M12 17h.01" />
-                        </svg>
-                    </div>
                     <h3>Connected Vehicles</h3>
                     <p>Digital backbone and UTM systems enabling seamless integration and traffic management.</p>
                 </div>
@@ -227,7 +220,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="network_title">The Operating Network</h2>
-                <p class="section-subtitle" data-i18n="network_subtitle">Corridors, vertiports, and coverage across the region.</p>
+                <p class="section-subtitle" data-i18n="network_subtitle">Corridors, vertiports, and coverage across the
+                    region.</p>
             </div>
             <div class="network-content">
                 <!-- Interactive Network Map Card -->
@@ -245,72 +239,92 @@
                             <defs>
                                 <style>
                                     @keyframes flow {
-                                        0%, 100% { stroke-dashoffset: 0; }
-                                        50% { stroke-dashoffset: 20; }
+
+                                        0%,
+                                        100% {
+                                            stroke-dashoffset: 0;
+                                        }
+
+                                        50% {
+                                            stroke-dashoffset: 20;
+                                        }
                                     }
+
                                     @keyframes move-dot {
-                                        0% { offset-distance: 0%; }
-                                        100% { offset-distance: 100%; }
+                                        0% {
+                                            offset-distance: 0%;
+                                        }
+
+                                        100% {
+                                            offset-distance: 100%;
+                                        }
                                     }
+
                                     .flight-path {
                                         fill: none;
                                         stroke: #3b82f6;
                                         stroke-width: 2;
-                                        stroke-dasharray: 8,4;
+                                        stroke-dasharray: 8, 4;
                                         animation: flow 3s linear infinite;
                                     }
+
                                     .flight-path.planned {
                                         stroke: #9ca3af;
                                         opacity: 0.5;
                                     }
+
                                     .aircraft-dot {
                                         fill: #3b82f6;
                                         filter: drop-shadow(0 0 4px #3b82f6);
                                     }
+
                                     .aircraft-dot.planned {
                                         fill: #9ca3af;
                                         filter: drop-shadow(0 0 2px #9ca3af);
                                     }
                                 </style>
-                                <path id="path1" d="M 100 80 Q 200 120 350 100 T 550 150" fill="none"/>
-                                <path id="path2" d="M 100 200 Q 250 250 450 220" fill="none"/>
-                                <path id="path3" d="M 80 320 Q 200 280 400 300 T 550 280" fill="none"/>
+                                <path id="path1" d="M 100 80 Q 200 120 350 100 T 550 150" fill="none" />
+                                <path id="path2" d="M 100 200 Q 250 250 450 220" fill="none" />
+                                <path id="path3" d="M 80 320 Q 200 280 400 300 T 550 280" fill="none" />
                             </defs>
-                            
+
                             <!-- Flight paths -->
-                            <use href="#path1" class="flight-path active-path"/>
-                            <use href="#path2" class="flight-path active-path"/>
-                            <use href="#path3" class="flight-path active-path"/>
-                            
+                            <use href="#path1" class="flight-path active-path" />
+                            <use href="#path2" class="flight-path active-path" />
+                            <use href="#path3" class="flight-path active-path" />
+
                             <!-- Planned paths (hidden by default) -->
-                            <path class="flight-path planned planned-path" d="M 150 150 Q 300 100 500 180" style="display: none;"/>
-                            <path class="flight-path planned planned-path" d="M 120 250 Q 280 300 500 250" style="display: none;"/>
-                            
+                            <path class="flight-path planned planned-path" d="M 150 150 Q 300 100 500 180"
+                                style="display: none;" />
+                            <path class="flight-path planned planned-path" d="M 120 250 Q 280 300 500 250"
+                                style="display: none;" />
+
                             <!-- Moving aircraft dots -->
                             <g class="aircraft-dot active-dot">
                                 <circle r="6" cx="100" cy="80">
                                     <animateMotion dur="6s" repeatCount="indefinite">
-                                        <mpath href="#path1"/>
+                                        <mpath href="#path1" />
                                     </animateMotion>
                                 </circle>
                             </g>
                             <g class="aircraft-dot active-dot">
                                 <circle r="6" cx="100" cy="200">
                                     <animateMotion dur="5s" repeatCount="indefinite">
-                                        <mpath href="#path2"/>
+                                        <mpath href="#path2" />
                                     </animateMotion>
                                 </circle>
                             </g>
                             <g class="aircraft-dot active-dot">
                                 <circle r="6" cx="80" cy="320">
                                     <animateMotion dur="7s" repeatCount="indefinite">
-                                        <mpath href="#path3"/>
+                                        <mpath href="#path3" />
                                     </animateMotion>
                                 </circle>
                             </g>
-                            
+
                             <!-- Center text -->
-                            <text x="300" y="200" text-anchor="middle" dy="0.3em" class="map-label" font-size="16" fill="#6b7280">
+                            <text x="300" y="200" text-anchor="middle" dy="0.3em" class="map-label" font-size="16"
+                                fill="#6b7280">
                                 Animated Flight Corridors Network
                             </text>
                         </svg>
@@ -342,6 +356,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Built With Global Leaders Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Built With Global Leaders</h2>
+                <p class="section-subtitle">Multi-OEM fleet. Technology partnerships. Regulatory alignment.</p>
+            </div>
+            <div class="partners-logos">
+                <img src="assets/advanced-mobility-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/ehang-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/mlg-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/advanced-mobility-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/ehang-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/mlg-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/advanced-mobility-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/ehang-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/mlg-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+                <img src="assets/advanced-mobility-logo.png" alt="Partner Logo" class="partner-logo" loading="lazy">
+
+            </div>
+            <div class="partners-buttons">
+                <a href="#" class="btn btn-primary">Become a Partner</a>
+                <a href="#" class="btn btn-outline">Download Partnership Overview</a>
             </div>
         </div>
     </section>
@@ -413,7 +454,8 @@
                             data to provide actionable insights and enhance decision-making.
                         </div>
                         <div class="benefit-item">
-                            <strong>Dynamic Visualization:</strong> Cutting-edge visualization techniques that present data
+                            <strong>Dynamic Visualization:</strong> Cutting-edge visualization techniques that present
+                            data
                             in an easily comprehensible format, facilitating better understanding and communication.
                         </div>
                         <div class="benefit-item">
@@ -422,12 +464,13 @@
                             reliability.
                         </div>
                         <div class="benefit-item">
-                            <strong>User-Friendly Experience:</strong> A system designed for ease of use, eliminating the
+                            <strong>User-Friendly Experience:</strong> A system designed for ease of use, eliminating
+                            the
                             need for specialized knowledge or training in drone operation.
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Right Column: ROI Calculator -->
                 <div class="roi-calculator-card">
                     <h3>ROI Calculator</h3>
@@ -506,7 +549,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="proven_title">Proven Technology</h2>
-                <p class="section-subtitle" data-i18n="proven_subtitle">Enterprise-grade autonomous systems built for reliability</p>
+                <p class="section-subtitle" data-i18n="proven_subtitle">Enterprise-grade autonomous systems built for
+                    reliability</p>
             </div>
             <div class="proven-features">
                 <div class="feature-item">
@@ -534,7 +578,8 @@
                     <div class="feature-icon-box">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
                         </svg>
                     </div>
                     <h3>Sustainable</h3>
@@ -683,7 +728,7 @@
                 <h2 class="section-title">Marketing</h2>
             </div>
             <div class="marketing-video">
-                <video src="assets/marketing-5-passengers.mp4" autoplay muted loop loading="lazy"></video>
+                <video src="assets/marketing.mp4" autoplay muted loop loading="lazy"></video>
             </div>
         </div>
     </section>
@@ -731,8 +776,8 @@
                     <div class="footer-section">
                         <div class="footer-logo">
                             <a href="#" class="logo">
-                        <img src="assets/advanced-mobility-logo.png" alt="AMH Logo">
-                    </a>
+                                <img src="assets/advanced-mobility-logo.png" alt="AMH Logo">
+                            </a>
                         </div>
                         <p>Advanced Air Mobility Holdings operates as the sovereign infrastructure provider for
                             next-generation aerial transportation across the region.</p>
