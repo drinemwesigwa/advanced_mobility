@@ -796,7 +796,7 @@ header {
 .domains-buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1rem;
     margin-top: 2rem;
     max-width: 100%;
@@ -1328,11 +1328,13 @@ footer {
 
     .domains-buttons {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
     }
 
     .domains-buttons a {
-        width: 100%;
+        width: auto;
         white-space: normal;
         text-align: center;
     }
