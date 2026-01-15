@@ -404,6 +404,58 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// Network Section Toggle Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
+    const activePaths = document.querySelectorAll('.active-path');
+    const plannedPaths = document.querySelectorAll('.planned-path');
+    const activeDots = document.querySelectorAll('.active-dot');
+    const plannedDots = document.querySelectorAll('.planned-dot');
+
+    toggleButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const toggleType = button.getAttribute('data-toggle');
+
+            // Update active button state
+            toggleButtons.forEach((btn) => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Update paths visibility
+            if (toggleType === 'active') {
+                activePaths.forEach((path) => (path.style.display = 'block'));
+                plannedPaths.forEach((path) => (path.style.display = 'none'));
+                activeDots.forEach((dot) => (dot.style.display = 'block'));
+                plannedDots.forEach((dot) => (dot.style.display = 'none'));
+            } else {
+                activePaths.forEach((path) => (path.style.display = 'none'));
+                plannedPaths.forEach((path) => (path.style.display = 'block'));
+                activeDots.forEach((dot) => (dot.style.display = 'none'));
+                plannedDots.forEach((dot) => (dot.style.display = 'block'));
+            }
+        });
+    });
+
+    // Calculate Route button interaction
+    const calculateBtn = document.querySelector('.btn-calculate');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const origin = document.querySelector('.estimator-form input[placeholder*="location"]:first-of-type').value;
+            const destination = document.querySelector('.estimator-form input[placeholder*="location"]:last-of-type').value;
+
+            if (origin && destination) {
+                // Visual feedback
+                calculateBtn.textContent = 'Route Calculated!';
+                calculateBtn.style.opacity = '0.8';
+                setTimeout(() => {
+                    calculateBtn.textContent = 'Calculate Route';
+                    calculateBtn.style.opacity = '1';
+                }, 2000);
+            }
+        });
+    }
+});
+
 // Error handling
 window.addEventListener('error', (e) => {
     console.error('JavaScript error:', e.error);

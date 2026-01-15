@@ -111,33 +111,24 @@
                     <p class="hero-subtitle" data-i18n="hero_desc">The infrastructure behind advanced air mobility.
                         Sovereign mobility capability at regional scale.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary" data-i18n="explore">Explore the Network</a>
-                        <a href="#" class="btn btn-outline" data-i18n="partner">Partner With Us</a>
+                        <a href="#" class="btn btn-primary" data-i18n="explore">Partner With Us</a>
+                        <a href="#" class="btn btn-outline" data-i18n="partner">Explore the Network</a>
+                    </div>
+                    <div class="trusted-header">
+                        <span class="trusted-label">Trusted by:</span>
+                        <div class="trusted-logos">
+                            <div class="trusted-logo">EHang</div>
+                            <div class="trusted-logo">Feiping</div>
+                            <div class="trusted-logo">GOVY</div>
+                            <div class="trusted-logo">YG</div>
+                            <div class="trusted-logo">CAA Pathway</div>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-image">
                     <video src="assets/wakri.mp4" autoplay muted loop></video>
                     <!-- <video src="assets/space-falcon-long-range-mission-drone.mp4" autoplay muted loop></video> -->
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trusted Partners Section -->
-    <section class="trusted-partners">
-        <div class="container">
-            <div class="trusted-header">
-                <span class="trusted-label">Trusted by:</span>
-                <div class="trusted-logos">
-                    <div class="trusted-logo">EHang</div>
-                    <div class="trusted-logo">Feiping</div>
-                    <div class="trusted-logo">GOVY</div>
-                    <div class="trusted-logo">YG</div>
-                    <div class="trusted-logo">CAA Pathway</div>
-                </div>
-            </div>
-            <div class="trusted-description">
-                <span>Multi-Aircraft Fleet Over UAE Digital Landscape</span>
             </div>
         </div>
     </section>
@@ -162,27 +153,21 @@
                         deliveries annually. Our commitment to safety, sustainability, and innovation drives everything
                         we do.
                     </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">2019</div>
+                            <div class="stat-label">Founded</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">45</div>
+                            <div class="stat-label">Cities Served</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">250K+</div>
+                            <div class="stat-label">Deliveries</div>
+                        </div>
+                    </div>
                     <a href="#" class="story-link">Read Our Full Story</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">2019</div>
-                    <div class="stat-label">Founded</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">45</div>
-                    <div class="stat-label">Cities Served</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">250K+</div>
-                    <div class="stat-label">Deliveries</div>
                 </div>
             </div>
         </div>
@@ -242,26 +227,118 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="network_title">The Operating Network</h2>
-                <p class="section-subtitle" data-i18n="network_subtitle">Corridors, vertiports, and coverage across the
-                    region.</p>
+                <p class="section-subtitle" data-i18n="network_subtitle">Corridors, vertiports, and coverage across the region.</p>
             </div>
             <div class="network-content">
-                <div class="network-map">
-                    <img src="assets/space-falcon.png" alt="Regional Network Coverage Map" loading="lazy">
+                <!-- Interactive Network Map Card -->
+                <div class="network-card map-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Interactive Network Map</h3>
+                        <div class="toggle-buttons">
+                            <button class="toggle-btn active" data-toggle="active">Active</button>
+                            <button class="toggle-btn" data-toggle="planned">Planned</button>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <svg class="network-animation" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <!-- Background -->
+                            <defs>
+                                <style>
+                                    @keyframes flow {
+                                        0%, 100% { stroke-dashoffset: 0; }
+                                        50% { stroke-dashoffset: 20; }
+                                    }
+                                    @keyframes move-dot {
+                                        0% { offset-distance: 0%; }
+                                        100% { offset-distance: 100%; }
+                                    }
+                                    .flight-path {
+                                        fill: none;
+                                        stroke: #3b82f6;
+                                        stroke-width: 2;
+                                        stroke-dasharray: 8,4;
+                                        animation: flow 3s linear infinite;
+                                    }
+                                    .flight-path.planned {
+                                        stroke: #9ca3af;
+                                        opacity: 0.5;
+                                    }
+                                    .aircraft-dot {
+                                        fill: #3b82f6;
+                                        filter: drop-shadow(0 0 4px #3b82f6);
+                                    }
+                                    .aircraft-dot.planned {
+                                        fill: #9ca3af;
+                                        filter: drop-shadow(0 0 2px #9ca3af);
+                                    }
+                                </style>
+                                <path id="path1" d="M 100 80 Q 200 120 350 100 T 550 150" fill="none"/>
+                                <path id="path2" d="M 100 200 Q 250 250 450 220" fill="none"/>
+                                <path id="path3" d="M 80 320 Q 200 280 400 300 T 550 280" fill="none"/>
+                            </defs>
+                            
+                            <!-- Flight paths -->
+                            <use href="#path1" class="flight-path active-path"/>
+                            <use href="#path2" class="flight-path active-path"/>
+                            <use href="#path3" class="flight-path active-path"/>
+                            
+                            <!-- Planned paths (hidden by default) -->
+                            <path class="flight-path planned planned-path" d="M 150 150 Q 300 100 500 180" style="display: none;"/>
+                            <path class="flight-path planned planned-path" d="M 120 250 Q 280 300 500 250" style="display: none;"/>
+                            
+                            <!-- Moving aircraft dots -->
+                            <g class="aircraft-dot active-dot">
+                                <circle r="6" cx="100" cy="80">
+                                    <animateMotion dur="6s" repeatCount="indefinite">
+                                        <mpath href="#path1"/>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                            <g class="aircraft-dot active-dot">
+                                <circle r="6" cx="100" cy="200">
+                                    <animateMotion dur="5s" repeatCount="indefinite">
+                                        <mpath href="#path2"/>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                            <g class="aircraft-dot active-dot">
+                                <circle r="6" cx="80" cy="320">
+                                    <animateMotion dur="7s" repeatCount="indefinite">
+                                        <mpath href="#path3"/>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                            
+                            <!-- Center text -->
+                            <text x="300" y="200" text-anchor="middle" dy="0.3em" class="map-label" font-size="16" fill="#6b7280">
+                                Animated Flight Corridors Network
+                            </text>
+                        </svg>
+                    </div>
                 </div>
-                <div class="network-info">
-                    <div class="info-card">
-                        <h3>Coverage Estimator</h3>
-                        <div class="estimator-form">
-                            <div class="form-group">
-                                <label data-i18n="origin">Origin</label>
-                                <input type="text" placeholder="Enter origin city">
-                            </div>
-                            <div class="form-group">
-                                <label data-i18n="destination">Destination</label>
-                                <input type="text" placeholder="Enter destination city">
-                            </div>
-                            <button class="btn btn-primary" data-i18n="calculate">Calculate Route</button>
+
+                <!-- Coverage Estimator Card -->
+                <div class="network-card estimator-card">
+                    <h3 class="card-title">Coverage Estimator</h3>
+                    <div class="estimator-form">
+                        <div class="form-group">
+                            <label data-i18n="origin">Origin</label>
+                            <input type="text" placeholder="Enter location">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="destination">Destination</label>
+                            <input type="text" placeholder="Enter location">
+                        </div>
+                        <button class="btn btn-primary btn-calculate" data-i18n="calculate">Calculate Route</button>
+                    </div>
+                    <div class="demo-results">
+                        <div class="result-item">
+                            <span class="result-label">Nearest Vertiport:</span>
+                            <span class="result-value">Downtown Hub</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Compatible Aircraft:</span>
+                            <span class="result-value">EHang EH216-S</span>
                         </div>
                     </div>
                 </div>
@@ -671,11 +748,9 @@
                 <div class="footer-main">
                     <div class="footer-section">
                         <div class="footer-logo">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M22 12 2 12M2 12 12 2M2 12 12 22" />
-                            </svg>
-                            <span>AMH</span>
+                            <a href="#" class="logo">
+                        <img src="assets/advanced-mobility-logo.png" alt="AMH Logo">
+                    </a>
                         </div>
                         <p>Advanced Air Mobility Holdings operates as the sovereign infrastructure provider for
                             next-generation aerial transportation across the region.</p>
