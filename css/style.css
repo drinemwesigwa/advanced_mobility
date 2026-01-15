@@ -1395,49 +1395,94 @@ footer {
     margin: 2rem 1rem;
 }
 
+.solutions-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
 .applications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+    .applications-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .applications-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .application-card {
     background: var(--white);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    text-align: center;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .application-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .application-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 1.5rem;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary);
-    border-radius: 12px;
-    color: var(--white);
+    background: transparent;
+    border-radius: 0;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.application-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.5;
 }
 
 .application-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin: 0 0 0.75rem 0;
     color: var(--foreground);
+    line-height: 1.4;
 }
 
 .application-card p {
-    color: var(--muted);
+    color: #6b7280;
     line-height: 1.6;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.benefits-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.benefits-column h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0;
 }
 
 .applications-benefits {
@@ -1460,16 +1505,24 @@ footer {
 }
 
 .benefit-item {
-    padding: 1rem;
-    background: var(--accent);
-    border-radius: 8px;
-    border-left: 4px solid var(--primary);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border-left: none;
+    padding-bottom: 1rem;
 }
 
 .benefit-item strong {
     color: var(--foreground);
     display: block;
     margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.benefit-item {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 /* ROI Calculator Section */
@@ -1486,14 +1539,7 @@ footer {
 .calculator-inputs {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-    .calculator-inputs {
-        grid-template-columns: 1fr 1fr;
-    }
+    gap: 1.5rem;
 }
 
 .input-group {
@@ -1544,8 +1590,72 @@ footer {
     font-weight: 500;
 }
 
+.roi-calculator-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.roi-calculator-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0;
+}
+
 .calculator-result {
     text-align: center;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #bae6fd;
+    margin-top: 1rem;
+}
+
+.result-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.result-amount {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+.range-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.range-min, .range-max {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+.range-value {
+    color: var(--foreground);
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .solutions-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 .result-card {

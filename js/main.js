@@ -456,6 +456,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ROI Calculator Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const missionFrequencySlider = document.getElementById('mission-frequency');
+    const averageDistanceSlider = document.getElementById('average-distance');
+    const missionValue = document.getElementById('mission-value');
+    const distanceValue = document.getElementById('distance-value');
+    const annualSavings = document.getElementById('annual-savings');
+
+    if (missionFrequencySlider && averageDistanceSlider) {
+        function calculateSavings() {
+            const missions = parseInt(missionFrequencySlider.value) || 1;
+            const distance = parseInt(averageDistanceSlider.value) || 1;
+            
+            // Calculate savings: base cost per km is $15, annual is 12 months
+            const costPerMission = distance * 15; // $15 per km
+            const monthlyTotal = missions * costPerMission;
+            const annualTotal = monthlyTotal * 12;
+            
+            // Display with proper formatting
+            annualSavings.textContent = '$' + annualTotal.toLocaleString();
+        }
+
+        // Update mission frequency display
+        missionFrequencySlider.addEventListener('input', () => {
+            missionValue.textContent = missionFrequencySlider.value;
+            calculateSavings();
+        });
+
+        // Update distance display
+        averageDistanceSlider.addEventListener('input', () => {
+            distanceValue.textContent = averageDistanceSlider.value + ' km';
+            calculateSavings();
+        });
+
+        // Initial calculation
+        calculateSavings();
+    }
+});
+
 // Error handling
 window.addEventListener('error', (e) => {
     console.error('JavaScript error:', e.error);

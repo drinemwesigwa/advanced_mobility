@@ -399,29 +399,61 @@
                     <p>Emergency medical supply delivery to remote areas</p>
                 </div>
             </div>
-            <div class="applications-benefits">
-                <h3>With our advanced solutions, you can expect:</h3>
-                <div class="benefits-list">
-                    <div class="benefit-item">
-                        <strong>Real-Time Data Collection:</strong> Instantaneous gathering of critical data points,
-                        enabling timely responses and proactive management.
+            <div class="solutions-container">
+                <!-- Left Column: Benefits -->
+                <div class="benefits-column">
+                    <h3>With our advanced solutions, you can expect:</h3>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <strong>Real-Time Data Collection:</strong> Instantaneous gathering of critical data points,
+                            enabling timely responses and proactive management.
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Comprehensive Analysis:</strong> Advanced analytics tools that process and interpret
+                            data to provide actionable insights and enhance decision-making.
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Dynamic Visualization:</strong> Cutting-edge visualization techniques that present data
+                            in an easily comprehensible format, facilitating better understanding and communication.
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Autonomous Operations:</strong> Continuous, hands-free monitoring and inspection
+                            performed by state-of-the-art drones and ground robots, ensuring high efficiency and
+                            reliability.
+                        </div>
+                        <div class="benefit-item">
+                            <strong>User-Friendly Experience:</strong> A system designed for ease of use, eliminating the
+                            need for specialized knowledge or training in drone operation.
+                        </div>
                     </div>
-                    <div class="benefit-item">
-                        <strong>Comprehensive Analysis:</strong> Advanced analytics tools that process and interpret
-                        data to provide actionable insights and enhance decision-making.
+                </div>
+                
+                <!-- Right Column: ROI Calculator -->
+                <div class="roi-calculator-card">
+                    <h3>ROI Calculator</h3>
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label>Mission Frequency (per month)</label>
+                            <input type="range" id="mission-frequency" min="1" max="100" value="50" step="1">
+                            <div class="range-display">
+                                <span class="range-min">1</span>
+                                <span class="range-value" id="mission-value">50</span>
+                                <span class="range-max">100</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Average Distance (km)</label>
+                            <input type="range" id="average-distance" min="1" max="500" value="15" step="5">
+                            <div class="range-display">
+                                <span class="range-min">1 km</span>
+                                <span class="range-value" id="distance-value">15 km</span>
+                                <span class="range-max">500 km</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="benefit-item">
-                        <strong>Dynamic Visualization:</strong> Cutting-edge visualization techniques that present data
-                        in an easily comprehensible format, facilitating better understanding and communication.
-                    </div>
-                    <div class="benefit-item">
-                        <strong>Autonomous Operations:</strong> Continuous, hands-free monitoring and inspection
-                        performed by state-of-the-art drones and ground robots, ensuring high efficiency and
-                        reliability.
-                    </div>
-                    <div class="benefit-item">
-                        <strong>User-Friendly Experience:</strong> A system designed for ease of use, eliminating the
-                        need for specialized knowledge or training in drone operation.
+                    <div class="calculator-result">
+                        <div class="result-label">Annual Savings</div>
+                        <div class="result-amount" id="annual-savings">$245,000</div>
                     </div>
                 </div>
             </div>
