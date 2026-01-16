@@ -36,7 +36,11 @@ body.rtl {
     direction: rtl;
 }
 
-h1, h2, h3, h4, .font-display {
+h1,
+h2,
+h3,
+h4,
+.font-display {
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: -0.02em;
     font-weight: 500;
@@ -552,10 +556,11 @@ header {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-size: clamp(4rem, 4vw, 2.5rem);
     font-weight: 700;
     color: var(--foreground);
     margin-bottom: 1rem;
+    color: var(--white);
 }
 
 .section-subtitle {
@@ -564,6 +569,7 @@ header {
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+    color: var(--white);
 }
 
 .network-content {
@@ -759,7 +765,9 @@ header {
 /* Domains Section */
 .domains {
     padding: 4rem 0;
-    background: var(--white);
+    background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%),
+        url('../assets/four-domain.jpg') center/cover no-repeat;
     border: 1px solid var(--border);
     border-radius: 12px;
     margin: 2rem 1rem;
@@ -769,7 +777,11 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+     width: fit-content;      /* grid shrinks to its content */
+    margin: 0 auto;
 }
+
+
 
 @media (max-width: 768px) {
     .domains-grid {
@@ -777,16 +789,35 @@ header {
     }
 }
 
-.domain-card {
-    background: var(--accent);
-    padding: 2rem;
+.main-domains {
+    background: transparent;
+    padding: 1rem;
     border-radius: 12px;
     border: 1px solid var(--border);
     transition: var(--transition);
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: hidden;   
+    /* max-width: 500rem; */
+     width: fit-content;      /* grid shrinks to its content */
+    margin: 0 auto; 
 }
+
+
+.domain-card {
+    background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+    backdrop-filter: blur(6px);           /* subtle blur */
+    -webkit-backdrop-filter: blur(6px);   /* Safari support */
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* optional soft border */
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 300px;
+}
+
 
 .domain-card:hover {
     transform: translateY(-4px);
@@ -796,7 +827,7 @@ header {
 .domains-buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content:center;
     gap: 1rem;
     margin-top: 2rem;
     max-width: 100%;
@@ -807,13 +838,29 @@ header {
     white-space: nowrap;
 }
 
+.domains-button-primary {
+    background: linear-gradient(90deg, #F26740 0%, #B92252 99.99%);
+    color: var(--white);
+}
+
+.domains-btn-outline {
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    color: var(--white);
+}
+
+.domains-btn-outline:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
 .domain-image {
     width: 100%;
-    height: 150px;
+    height: 120px;
     object-fit: contain;
     border-radius: 8px;
     margin-bottom: 1rem;
-    background: var(--white);
 }
 
 .domain-icon {
@@ -1016,11 +1063,24 @@ header {
         max-height: none;
     }
 }
+/* shaping Section */
+.shaping {
+    padding: 4rem 0;
+    background-image: url('../assets/shaping.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 2rem 1rem;
+}
+
+
 
 /* CTA Section */
 .cta {
     padding: 4rem 0;
-    background: var(--background);
+    background: linear-gradient(180deg, #F3785C 0%, #F05C61 46.63%, #EC3367 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     color: var(--foreground);
     text-align: center;
     border: 1px solid var(--border);
@@ -1132,7 +1192,8 @@ header {
     .form-group select,
     .form-group input,
     .form-group textarea {
-        font-size: 16px; /* Prevent zoom on iOS */
+        font-size: 16px;
+        /* Prevent zoom on iOS */
         padding: 1rem;
     }
 }
@@ -1298,6 +1359,7 @@ footer {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1400,9 +1462,6 @@ footer {
         justify-content: center;
     }
 
-    .domains-grid {
-        grid-template-columns: 1fr;
-    }
 
     .domain-card {
         padding: 1.5rem;
@@ -1438,7 +1497,8 @@ footer {
     }
 
     .domain-image {
-        height: 120px; /* Reduce height on mobile for better fit */
+        height: 120px;
+        /* Reduce height on mobile for better fit */
     }
 
     .story-visual video {
@@ -1448,6 +1508,7 @@ footer {
 
 /* Print styles */
 @media print {
+
     header,
     .mobile-menu-overlay,
     .btn {
@@ -1745,7 +1806,8 @@ footer {
     margin-top: 0.5rem;
 }
 
-.range-min, .range-max {
+.range-min,
+.range-max {
     color: #9ca3af;
     font-size: 0.75rem;
 }
@@ -1861,6 +1923,7 @@ footer {
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
+
     .fleet-tabs::-webkit-scrollbar {
         display: none;
     }
@@ -1975,10 +2038,10 @@ footer {
 
 .feature-tag {
     display: inline-block;
-    background: var(--primary);
+    background: linear-gradient(90deg, #F26740 0%, #B92252 99.99%);
     color: var(--white);
     padding: 0.75rem 1.5rem;
-    border-radius: 25px;
+    border-radius: 10px;
     font-size: 0.875rem;
     font-weight: 500;
 }
@@ -1997,6 +2060,7 @@ footer {
     .fleet-stats {
         gap: 1rem;
     }
+
     .fleet-stat {
         width: 120px;
         height: 120px;
