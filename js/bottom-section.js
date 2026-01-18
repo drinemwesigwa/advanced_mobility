@@ -4,24 +4,24 @@ function submitForm() {
 	const message = document.getElementById("use-case").value.trim();
 
 	if (!industry) {
-		showAlert("Please select an industry", "error");
+		showAlert(translations[currentLang].select_industry_error, "error");
 		return;
 	}
 
 	if (!email) {
-		showAlert("Please enter your email", "error");
+		showAlert(translations[currentLang].enter_email_error, "error");
 		return;
 	}
 
 	// ✅ Email validation
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 	if (!emailRegex.test(email)) {
-		showAlert("Please enter a valid email address", "error");
+		showAlert(translations[currentLang].valid_email_error, "error");
 		return;
 	}
 
 	if (!message) {
-		showAlert("Please describe your use case", "error");
+		showAlert(translations[currentLang].describe_use_case_error, "error");
 		return;
 	}
 
@@ -46,7 +46,7 @@ function submitForm() {
 			return response.json();
 		})
 		.then(() => {
-			showAlert("Thank you! Our team will contact you shortly.", "success");
+			showAlert(translations[currentLang].thank_you_success, "success");
 
 			document.getElementById("industry").value = "";
 			document.getElementById("email").value = "";
@@ -54,7 +54,7 @@ function submitForm() {
 			document.getElementById("char-count").textContent = "0/100";
 		})
 		.catch(() => {
-			showAlert("Something went wrong. Please try again later.", "error");
+			showAlert(translations[currentLang].something_went_wrong_error, "error");
 		})
 		.finally(() => {
 			btn.classList.remove("loading");

@@ -76,6 +76,13 @@ const translations = {
 		email_required: "Email is required",
 		email_invalid: "Please enter a valid email",
 		use_case_required: "Please describe your use case",
+		select_industry_error: "Please select an industry",
+		enter_email_error: "Please enter your email",
+		valid_email_error: "Please enter a valid email address",
+		describe_use_case_error: "Please describe your use case",
+		thank_you_success: "Thank you! Our team will contact you shortly.",
+		something_went_wrong_error: "Something went wrong. Please try again later.",
+		enter_origin_destination_error: "Please enter both origin and destination.",
 
 		// Domains Section
 		domains_title: "Four Domains. One Ecosystem.",
@@ -185,7 +192,21 @@ const translations = {
 
 		// Fleet Explorer
 		operational_telemetry: "Operational Telemetry",
-		telemetry_desc: "Real-time performance metrics and operational status monitoring"
+		telemetry_desc: "Real-time performance metrics and operational status monitoring",
+		
+		// Aircraft specs labels
+		curb_weight: "Curb weight",
+		speed: "Speed",
+		endurance: "Endurance",
+		max_takeoff_weight: "Maximum Take off Weight",
+		flight_time: "Flight Time",
+		payload: "Payload",
+		max_flight_altitude: "Max Flight Altitude",
+		range: "Range",
+		passengers: "Passengers",
+		seats: "Seats",
+		full_specifications: "Full Specifications",
+		form_error_required: "Error"
 	},
 	ar: arTranslations,
 };
@@ -385,7 +406,7 @@ function initEstimatorForm() {
 					`Calculating route from ${origin} to ${destination}...\n\nThis is a demo. In a real application, this would connect to a routing API.`,
 				);
 			} else {
-				alert("Please enter both origin and destination.");
+				showAlert(translations[currentLang].enter_origin_destination_error, "error");
 			}
 		});
 	}

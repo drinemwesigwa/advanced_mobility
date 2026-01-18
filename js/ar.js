@@ -81,6 +81,8 @@ const arTranslations = {
 	seats: "المقاعد",
 	operational_telemetry: "بيانات الهندسة التشغيلية",
 	telemetry_desc: "مقاييس الأداء في الوقت الفعلي ومراقبة حالة التشغيل",
+	full_specifications: "المواصفات الكاملة",
+	form_error_required: "خطأ",
 
 	// Stats
 	aircraft_partners: "طائرات عبر 3 شركاء OEM",
@@ -123,6 +125,13 @@ const arTranslations = {
 	email_required: "البريد الإلكتروني مطلوب",
 	email_invalid: "يرجى إدخال بريد إلكتروني صحيح",
 	use_case_required: "يرجى وصف حالة الاستخدام الخاصة بك",
+	select_industry_error: "يرجى تحديد صناعة",
+	enter_email_error: "يرجى إدخال بريدك الإلكتروني",
+	valid_email_error: "يرجى إدخال عنوان بريد إلكتروني صحيح",
+	describe_use_case_error: "يرجى وصف حالة الاستخدام الخاصة بك",
+	thank_you_success: "شكراً لك! سيتواصل معك فريقنا قريباً.",
+	something_went_wrong_error: "حدث خطأ ما. يرجى محاولة لاحقاً.",
+	enter_origin_destination_error: "يرجى إدخال نقطة الانطلاق والوجهة معاً.",
 
 	// Domains Section
 	domains_title: "أربع مجالات. نظام بيئي واحد.",
@@ -219,7 +228,7 @@ const arTranslations = {
 
 	// Footer translations
 	footer_description: "تعمل شركة Advanced Air Mobility Holdings كمزود للبنية التحتية السيادية لنقل الطيران من الجيل القادم عبر المنطقة.",
-	footer_copyright: "&copy; 2026 Advanced Air Mobility Holdings. جميع الحقوق محفوظة.",
+	footer_copyright: "© 2026 شركة أدفانسد إير موبيليتي القابضة. جميع الحقوق محفوظة.",
 
 	// CTA Section
 	ready_title: "هل أنت مستعد للانتقال إلى العمليات المستقلة؟",
