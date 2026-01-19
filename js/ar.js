@@ -227,8 +227,10 @@ const arTranslations = {
 	trusted_by: "موثوق من قبل:",
 
 	// Footer translations
-	footer_description: "تعمل شركة Advanced Air Mobility Holdings كمزود للبنية التحتية السيادية لنقل الطيران من الجيل القادم عبر المنطقة.",
-	footer_copyright: "© 2026 شركة أدفانسد إير موبيليتي القابضة. جميع الحقوق محفوظة.",
+	footer_description:
+		"تعمل شركة Advanced Air Mobility Holdings كمزود للبنية التحتية السيادية لنقل الطيران من الجيل القادم عبر المنطقة.",
+	footer_copyright:
+		"© 2026 شركة أدفانسد إير موبيليتي القابضة. جميع الحقوق محفوظة.",
 
 	// CTA Section
 	ready_title: "هل أنت مستعد للانتقال إلى العمليات المستقلة؟",
@@ -241,5 +243,5 @@ const arTranslations = {
 	other: "أخرى",
 	email_placeholder: "أدخل بريدك الإلكتروني",
 	use_case_placeholder: "وصف حالتك...",
-	schedule_demo: "جدولة مكالمة عرض توضيحي"
+	schedule_demo: "جدولة مكالمة عرض توضيحي",
 };

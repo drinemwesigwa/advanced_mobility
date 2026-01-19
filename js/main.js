@@ -210,6 +210,74 @@ const translations = {
 		seats: "Seats",
 		full_specifications: "Full Specifications",
 		form_error_required: "Error",
+
+		// Partners section
+		partners_subtitle:
+			"Multi-OEM fleet. Technology partnerships. Regulatory alignment.",
+		partners_title: "Built With Global Leaders",
+		become_partner: "Become a Partner",
+		partnership_overview: "Partnership Overview",
+
+		// Stats section
+		aircraft_partners: "Aircraft Across 3 OEM<br />Partners",
+
+		vertiports_corridor: "Vertiports Planned<br />200km corridor",
+
+		gcaa_certificate: "GCAA Type Certificate<br />Pathway Active",
+
+		flight_hours_logged: "Flight Hours<br />Logged",
+
+		technology_partners: "Technology Integration<br />Partners",
+
+		// Fleet Explorer header
+		fleet_explorer_title: "Fleet Explorer",
+		fleet_explorer_desc:
+			"Explore operational capabilities across our aerial mobility fleet",
+
+		// Specs labels (shared across aircraft)
+		curb_weight: "Curb Weight",
+		speed: "Speed",
+		endurance: "Endurance",
+		max_takeoff_weight: "Maximum Take Off Weight",
+		flight_time: "Flight Time",
+		payload: "Payload",
+		range: "Range",
+		max_flight_altitude: "Max Flight Altitude",
+		passengers: "Passengers",
+		seats: "Seats",
+
+		// Telemetry
+		operational_telemetry: "Operational Telemetry",
+		telemetry_desc:
+			"Real-time performance metrics and operational status monitoring",
+
+		// CTA
+		full_specifications: "Full Specifications",
+
+		// Shaping section
+		shaping_title: "Shaping the Future <br />of Air Mobility",
+
+		shaping_desc:
+			"From concept to commercial impact, we enable air mobility ventures to lead their markets.",
+
+		shaping_cta_link: "Got a project in mind?",
+
+		// CTA section
+		ready_title: "Ready to Transition to Autonomous Operations?",
+
+		choose_industry: "Choose industry...",
+
+		agriculture: "Agriculture",
+		construction: "Construction",
+		logistics: "Logistics",
+		healthcare: "Healthcare",
+		security: "Security",
+		other: "Other",
+
+		email_placeholder: "Enter your email",
+		use_case_placeholder: "Tell us about your use case...",
+
+		schedule_demo: "Schedule Demo Call",
 	},
 	ar: arTranslations,
 };
@@ -231,6 +299,11 @@ function updateLanguage(lang) {
 			} else if (el.classList.contains("lang-text")) {
 				// Update language button text
 				el.textContent = t[key];
+			} else {
+				el.textContent = t[key];
+			}
+			if (t[key].includes("<br")) {
+				el.innerHTML = t[key];
 			} else {
 				el.textContent = t[key];
 			}
