@@ -231,6 +231,23 @@ function initTopHeroSection() {
 	const domainCards = document.querySelectorAll(".domain-card");
 	const defaultBgImage = "url(assets/four-domain.jpg)";
 
+	// Preload domain card background images
+	function preloadDomainImages() {
+		domainCards.forEach((card) => {
+			const bgImage = card.getAttribute("data-bg");
+			if (bgImage) {
+				const img = new Image();
+				img.src = bgImage;
+			}
+		});
+		// Also preload default background
+		const defaultImg = new Image();
+		defaultImg.src = "assets/four-domain.jpg";
+	}
+	
+	// Preload images immediately
+	preloadDomainImages();
+
 	// Set default background on page load
 	if (domainsSection) {
 		domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
