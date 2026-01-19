@@ -384,9 +384,20 @@
 	padding: 90px 0;
 	background:
 		linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-		url("../assets/four-domain.jpg") center / cover no-repeat;
+		url("assets/four-domain.jpg") center / cover no-repeat;
 	text-align: center;
-	transition: background-image 0.6s ease-in-out;
+	transition: background-image 0.2s ease-out;
+	will-change: background-image;
+}
+
+/* Background Image Animation - Smooth fade effect */
+@keyframes backgroundFade {
+	0% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* =========================
@@ -433,8 +444,7 @@
 .domain-card {
 	position: relative;
 	height: 269px;
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(4.25px);
+	background: transparent;
 	border-radius: 12px;
 	overflow: hidden;
 	cursor: pointer;
@@ -1103,10 +1113,17 @@
 	right: 0;
 }
 
-.industry-card:first-child::before,
+/* Enable ONLY the left border on the first card */
+.industry-card:first-child::before {
+	display: block;
+	left: 0;
+}
+
+
+/* .industry-card:first-child::before,
 .industry-card:last-child::after {
 	display: none;
-}
+} */
 
 /* =========================
    Front & Hover States

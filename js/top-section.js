@@ -34,7 +34,7 @@ function preloadHeroImages() {
 function initTopHeroSection() {
 	// Preload all hero images immediately
 	preloadHeroImages();
-	
+
 	let currentIndex = 0;
 	let currentBg = document.querySelector(".hero-bg.current");
 	let nextBg = document.querySelector(".hero-bg.next");
@@ -83,12 +83,12 @@ function initTopHeroSection() {
 	showSlide(currentIndex);
 
 	// Register callback to update hero when language changes
-	window.updateHeroLanguage = function() {
+	window.updateHeroLanguage = function () {
 		const slide = slides[currentIndex];
 		titleEl.textContent = slide.title[currentLang];
 		subtitleEl.textContent = slide.subtitle[currentLang];
 	};
-	
+
 	// Also update immediately in case page was loaded with non-English language
 	window.updateHeroLanguage();
 
@@ -226,10 +226,10 @@ function initTopHeroSection() {
 		});
 	});
 
-	// Domain card background image change on hover
+	// Domain card background image change on hover - smooth transition
 	const domainsSection = document.querySelector(".domains");
 	const domainCards = document.querySelectorAll(".domain-card");
-	const defaultBgImage = "url(../assets/four-domain.jpg)";
+	const defaultBgImage = "url(assets/four-domain.jpg)";
 
 	domainCards.forEach((card) => {
 		const bgImage = card.getAttribute("data-bg");
@@ -242,7 +242,7 @@ function initTopHeroSection() {
 
 		card.addEventListener("mouseleave", () => {
 			if (domainsSection) {
-				domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
+				domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(assets/four-domain.jpg)`;
 			}
 		});
 	});
@@ -294,7 +294,7 @@ function initTopProvenTechnology() {
 	});
 
 	// NEW: update slides when language changes
-	window.updateProvenTechnologyLanguage = function() {
+	window.updateProvenTechnologyLanguage = function () {
 		const card = cards[currentIndex];
 		const t = translations[currentLang];
 		const titleKey = card.getAttribute("data-i18n-title");
@@ -302,7 +302,7 @@ function initTopProvenTechnology() {
 		if (t[titleKey]) slideTitle.textContent = t[titleKey];
 		if (t[descKey]) slideDesc.textContent = t[descKey];
 	};
-	
+
 	// Also update immediately in case page was loaded with non-English language
 	window.updateProvenTechnologyLanguage();
 }
@@ -349,3 +349,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 });
+
+function initTopLanguage() {
+	// Load preferred language
+	const savedLang = localStorage.getItem("preferred-language");
+	if (savedLang && translations[savedLang]) {
+		currentLang = savedLang;
+	}
+
+	// Initialize language
+	updateLanguage(currentLang);
+}

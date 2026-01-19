@@ -445,11 +445,13 @@
 		padding: 0px 20px;
 		gap: 16px;
 		flex-wrap: wrap;
+		justify-content: center;
 	}
 
 	.stat-item {
 		width: 120px;
-		height: 90px;
+		height: auto;
+		gap: 8px;
 	}
 
 	.stat-item:nth-child(4) {
@@ -458,17 +460,19 @@
 
 	.stat-item h2 {
 		font-size: 32px;
-		height: 40px;
+		height: auto;
 	}
 
 	.stat-item p {
 		font-size: 11px;
-		height: 32px;
+		height: auto;
 		line-height: 130%;
 	}
 
 	.divider {
 		height: 10px;
+		width: 100%;
+		flex-shrink: 0;
 	}
 }
 
@@ -482,22 +486,33 @@
 		flex-direction: column;
 		padding: 0px;
 		gap: 20px;
+		align-items: center;
 	}
 
 	.stat-item {
 		width: 100%;
 		max-width: 200px;
-		height: 80px;
+		height: auto;
+		gap: 12px;
+		margin: 0 auto;
+		align-items: center;
 	}
 
 	.stat-item h2 {
 		font-size: 28px;
-		height: 35px;
+		height: auto;
 	}
 
 	.stat-item p {
 		font-size: 12px;
-		height: 30px;
+		height: auto;
+	}
+
+	.divider {
+		width: 100%;
+		height: 8px;
+		display: flex;
+		align-self: center;
 	}
 }
 

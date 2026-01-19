@@ -181,8 +181,10 @@ const translations = {
 		trusted_by: "Trusted by:",
 
 		// Footer translations
-		footer_description: "Advanced Air Mobility Holdings operates as the sovereign infrastructure provider for next-generation aerial transportation across the region.",
-		footer_copyright: "&copy; 2026 Advanced Air Mobility Holdings. All rights reserved.",
+		footer_description:
+			"Advanced Air Mobility Holdings operates as the sovereign infrastructure provider for next-generation aerial transportation across the region.",
+		footer_copyright:
+			"&copy; 2026 Advanced Air Mobility Holdings. All rights reserved.",
 
 		// CTA Section
 		choose_industry: "Choose industry...",
@@ -192,8 +194,9 @@ const translations = {
 
 		// Fleet Explorer
 		operational_telemetry: "Operational Telemetry",
-		telemetry_desc: "Real-time performance metrics and operational status monitoring",
-		
+		telemetry_desc:
+			"Real-time performance metrics and operational status monitoring",
+
 		// Aircraft specs labels
 		curb_weight: "Curb weight",
 		speed: "Speed",
@@ -206,14 +209,13 @@ const translations = {
 		passengers: "Passengers",
 		seats: "Seats",
 		full_specifications: "Full Specifications",
-		form_error_required: "Error"
+		form_error_required: "Error",
 	},
 	ar: arTranslations,
 };
 
 // Language switching functionality
 function updateLanguage(lang) {
-	if (lang === currentLang) return; // do nothing if already selected
 	currentLang = lang;
 	const t = translations[lang];
 	document.documentElement.lang = lang;
@@ -406,7 +408,10 @@ function initEstimatorForm() {
 					`Calculating route from ${origin} to ${destination}...\n\nThis is a demo. In a real application, this would connect to a routing API.`,
 				);
 			} else {
-				showAlert(translations[currentLang].enter_origin_destination_error, "error");
+				showAlert(
+					translations[currentLang].enter_origin_destination_error,
+					"error",
+				);
 			}
 		});
 	}
@@ -457,29 +462,46 @@ function initROICalculator() {
 	}
 }
 
-// Lazy loading for images
-function initLazyLoading() {
-	const images = document.querySelectorAll('img[loading="lazy"]');
+// Optimize video loading - ensure videos play properly
+function initVideoAutoplay() {
+	const videos = document.querySelectorAll("video");
+	videos.forEach((video) => {
+		// Set preload to metadata for faster play initiation
+		if (!video.preload) {
+			video.preload = "metadata";
+		}
 
-	if ("IntersectionObserver" in window) {
-		const imageObserver = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					const img = entry.target;
-					img.src = img.dataset.src || img.src;
-					img.classList.remove("lazy");
-					imageObserver.unobserve(img);
+		// Try to play video
+		const playPromise = video.play();
+		if (playPromise !== undefined) {
+			playPromise.catch(() => {
+				// Autoplay failed, set up intersection observer
+				if ("IntersectionObserver" in window) {
+					const videoObserver = new IntersectionObserver(
+						(entries) => {
+							entries.forEach((entry) => {
+								if (entry.isIntersecting) {
+									entry.target.play().catch(() => {
+										// Play failed silently
+									});
+								} else {
+									entry.target.pause();
+								}
+							});
+						},
+						{ threshold: 0.25 },
+					);
+					videoObserver.observe(video);
 				}
 			});
-		});
-
-		images.forEach((img) => imageObserver.observe(img));
-	}
+		}
+	});
 }
 
 // Keyboard navigation
 function initKeyboardNavigation() {
 	document.addEventListener("keydown", (e) => {
+		debugger;
 		// Close mobile menu with Escape key
 		if (e.key === "Escape") {
 			closeMobileMenu();
@@ -488,7 +510,7 @@ function initKeyboardNavigation() {
 		// Language switching with Ctrl+L
 		if (e.ctrlKey && e.key === "l") {
 			e.preventDefault();
-			updateLanguage(currentLang === "en" ? "ar" : "en");
+			updateLanguage(currentLang === "en" ? "en" : "ar");
 		}
 	});
 }
@@ -576,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initSmoothScrolling();
 	initEstimatorForm();
 	initROICalculator();
-	initLazyLoading();
+	initVideoAutoplay();
 	initKeyboardNavigation();
 	initPerformanceOptimizations();
 	initAccessibility();
@@ -925,6 +947,7 @@ function initBottomSection() {
 				initFleetTabs();
 				// Initialize CTA form
 				setTimeout(() => initCTAForm(), 100);
+				initBottomLanguage();
 			})
 			.catch((error) => console.error("Error loading bottom section:", error));
 	}
@@ -969,6 +992,7 @@ function initTopSection() {
 				topLoaded = true;
 				initTopHeroSection();
 				initTopProvenTechnology();
+				initTopLanguage();
 			})
 			.catch((error) => console.error("Error loading top section:", error));
 	}
