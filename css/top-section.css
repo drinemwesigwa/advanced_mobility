@@ -736,7 +736,7 @@
 
 .network-content {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	/* grid-template-columns: 2fr 1fr; */
 	gap: 2rem;
 }
 
@@ -960,8 +960,6 @@
 	}
 }
 
-
-
 /* =========================
    National Value Section
 ========================= */
@@ -975,7 +973,8 @@
 	min-height: 100vh;
 	padding: 70px 70px 0 70px;
 	overflow: hidden;
-	background: linear-gradient(
+	background:
+		linear-gradient(
 			180deg,
 			rgba(21, 0, 49, 0) 58.23%,
 			rgba(255, 121, 119, 0.14) 100%
@@ -1085,7 +1084,6 @@
 	display: none;
 }
 
-
 .industry-card:hover {
 	transform: translateY(-10px);
 }
@@ -1119,7 +1117,6 @@
 	left: 0;
 }
 
-
 /* .industry-card:first-child::before,
 .industry-card:last-child::after {
 	display: none;
@@ -1140,8 +1137,7 @@
 	/* padding: 0 20px; */
 	text-align: center;
 	gap: 10px;
-	margin-bottom:2rem;
-
+	margin-bottom: 2rem;
 }
 
 .industry-front {
@@ -1282,13 +1278,6 @@
 		font-size: 18px;
 	}
 }
-
-
-
-
-
-
-
 
 .proven-technology {
 	position: relative;
