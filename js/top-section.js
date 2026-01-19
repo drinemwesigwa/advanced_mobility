@@ -231,6 +231,11 @@ function initTopHeroSection() {
 	const domainCards = document.querySelectorAll(".domain-card");
 	const defaultBgImage = "url(assets/four-domain.jpg)";
 
+	// Set default background on page load
+	if (domainsSection) {
+		domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
+	}
+
 	domainCards.forEach((card) => {
 		const bgImage = card.getAttribute("data-bg");
 
@@ -242,7 +247,7 @@ function initTopHeroSection() {
 
 		card.addEventListener("mouseleave", () => {
 			if (domainsSection) {
-				domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(assets/four-domain.jpg)`;
+				domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
 			}
 		});
 	});
