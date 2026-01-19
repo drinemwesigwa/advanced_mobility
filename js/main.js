@@ -5,13 +5,6 @@ document.documentElement.lang = currentLang;
 document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 document.body.classList.toggle("rtl", currentLang === "ar");
 
-fetch("partials/top.html")
-	.then((res) => res.text())
-	.then((data) => {
-		document.getElementById("top-section").innerHTML = data;
-	})
-	.catch((err) => console.error("Failed to load top.html:", err));
-
 let bottomLoaded = false,
 	topLoaded = false;
 
@@ -1008,24 +1001,6 @@ function showAlert(message, type = "info") {
 	}
 }
 
-// Initialize bottom section with fleet tabs and CTA form
-function initBottomSection() {
-	if (!bottomLoaded) {
-		fetch("partials/bottom.html")
-			.then((res) => res.text())
-			.then((data) => {
-				document.getElementById("bottom-section").innerHTML = data;
-				bottomLoaded = true;
-				// Initialize fleet tabs
-				initFleetTabs();
-				// Initialize CTA form
-				setTimeout(() => initCTAForm(), 100);
-				initBottomLanguage();
-			})
-			.catch((error) => console.error("Error loading bottom section:", error));
-	}
-}
-
 // Update content row and section background with card data
 function updateProvenTechContent(
 	card,
@@ -1055,26 +1030,15 @@ function updateProvenTechContent(
 	}
 }
 
-// Initialize top section with fleet tabs and CTA form
-function initTopSection() {
-	if (!topLoaded) {
-		fetch("partials/top.html")
-			.then((res) => res.text())
-			.then((data) => {
-				document.getElementById("top-section").innerHTML = data;
-				topLoaded = true;
-				initTopHeroSection();
-				initTopProvenTechnology();
-				initTopLanguage();
-			})
-			.catch((error) => console.error("Error loading top section:", error));
-	}
-}
-
 // Load bottom & top section on page load or when needed
 document.addEventListener("DOMContentLoaded", () => {
-	initBottomSection();
-	initTopSection();
+	// Initialize fleet tabs
+	initFleetTabs();
+	// Initialize CTA form
+	setTimeout(() => initCTAForm(), 100);
+
+	initTopHeroSection();
+	initTopProvenTechnology();
 });
 
 // Error handling

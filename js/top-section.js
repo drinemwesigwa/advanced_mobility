@@ -244,7 +244,7 @@ function initTopHeroSection() {
 		const defaultImg = new Image();
 		defaultImg.src = "assets/four-domain.jpg";
 	}
-	
+
 	// Preload images immediately
 	preloadDomainImages();
 
@@ -371,14 +371,3 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 });
-
-function initTopLanguage() {
-	// Load preferred language
-	const savedLang = localStorage.getItem("preferred-language");
-	if (savedLang && translations[savedLang]) {
-		currentLang = savedLang;
-	}
-
-	// Initialize language
-	updateLanguage(currentLang);
-}

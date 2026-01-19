@@ -2190,3 +2190,7 @@ body.rtl .shaping-content {
 		width: 90%;
 	}
 }
+
+.hide {
+	display: none;
+}
