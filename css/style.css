@@ -9,10 +9,10 @@
 	--white: #ffffff;
 	--accent: #f8fafc;
 	--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-		0 2px 4px -1px rgba(0, 0, 0, 0.06);
-	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	--shadow:
+		0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--shadow-lg:
+		0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -131,22 +131,39 @@ h4,
 
 /* Header */
 #header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 0;
+	width: 100%;
 	z-index: 1000;
+	background: transparent;
 
-	background-image: url("../assets/header_bg.jpg");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative; /* needed for pseudo-element */
+	display: flex;
+	justify-content: center; /* centers header container */
+}
+
+/* inner wrapper */
+.header-inner {
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 24px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* RTL support */
+html[dir="rtl"] .header-inner {
+	flex-direction: row-reverse;
 }
 
 #header::before {
 	content: "";
 	position: absolute;
 	inset: 0; /* top:0; left:0; right:0; bottom:0; */
-	background: rgba(0, 0, 0, 0.45); /* same as #00000073 */
 	z-index: 0;
 }
 
@@ -165,6 +182,9 @@ h4,
 	padding: 1rem 2rem; /* adjust left/right padding */
 	/* border-bottom: 1px solid var(--border); */
 	background: transparent;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* Logo Section */
@@ -552,7 +572,6 @@ h4,
 
 /* Mobile Responsiveness */
 
-
 @media (max-width: 768px) {
 	.header-top {
 		flex-direction: column;
@@ -604,9 +623,9 @@ h4,
 	margin-bottom: 1rem;
 }
 
-.footer-main {	
+.footer-main {
 	display: flex;
-	color: #D4D4D4;
+	color: #d4d4d4;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 140%;
@@ -619,7 +638,7 @@ h4,
 }
 
 .footer-icon {
-	color: #A3A3A3;
+	color: #a3a3a3;
 	transition: all 0.3s ease;
 	display: flex;
 	align-items: center;
@@ -644,7 +663,7 @@ h4,
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #A3A3A3;
+	color: #a3a3a3;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 140%;

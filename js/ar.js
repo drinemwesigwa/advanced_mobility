@@ -10,7 +10,7 @@ const arTranslations = {
 	title: "هندسة السماء. تمكين المستقبل.",
 	hero_desc:
 		"البنية التحتية وراء التنقل الجوي المتقدم. قدرة تنقل سيادية على نطاق إقليمي.",
-	network_title: "شبكة التشغيل",
+	network_title: "الشبكة التشغيلية",
 	network_subtitle: "الممرات والموانئ الجوية والتغطية في جميع أنحاء المنطقة.",
 	estimator_title: "مقدر التغطية",
 	origin: "نقطة الانطلاق",
@@ -30,8 +30,9 @@ const arTranslations = {
 	capabilities: "القدرات",
 	nav_ourStory: "قصتنا",
 	nav_oneEcosystem: "نظام بيئي واحد",
-	nav_infrastructure: "البنية التحتية",
-	nav_capabilities: "القدرات",
+	nav_infrastructure: "الشبكة التشغيلية",
+	nav_capabilities: "القيمة الوطنية",
+	nav_proven_technologies: "تكنولوجيا مثبتة",
 
 	search_placeholder: "بحث",
 	partner_portal: "بوابة الشركاء",

@@ -61,3 +61,14 @@ function submitForm() {
 			btn.disabled = false;
 		});
 }
+
+function initBottomLanguage() {
+	// Load preferred language
+	const savedLang = localStorage.getItem("preferred-language");
+	if (savedLang && translations[savedLang]) {
+		currentLang = savedLang;
+	}
+
+	// Initialize language
+	updateLanguage(currentLang);
+}

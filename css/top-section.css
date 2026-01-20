@@ -37,6 +37,9 @@
 	align-items: center;
 	overflow: hidden;
 	color: #ffffff;
+	padding-top: calc(5rem + 60px);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .hero-bg {
@@ -52,9 +55,7 @@
 
 .hero-bg.current {
 	opacity: 1;
-	background:
-		linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-		url("../assets/autoflight dronereal.jpg") center/cover no-repeat;
+	background: url("../assets/hero1.png") center/cover no-repeat;
 }
 
 /* Container inside hero */
@@ -84,6 +85,7 @@
 }
 
 .hero-text-inner {
+	margin-top: 14vh;
 	opacity: 1;
 	transition: opacity 0.8s ease-in-out; /* smooth text fade */
 	display: flex;
@@ -153,7 +155,7 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	margin-top: 15rem;
+	margin-top: 9rem;
 }
 
 .trusted-label {
@@ -382,12 +384,50 @@
 /* Domains Section */
 .domains {
 	padding: 90px 0;
-	background:
+	/* background:
 		linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-		url("assets/four-domain.jpg") center / cover no-repeat;
+		url("assets/four-domain.jpg") center / cover no-repeat; */
 	text-align: center;
-	transition: background-image 0.2s ease-out;
-	will-change: background-image;
+	/* transition: background-image 0.2s ease-out; */
+	/* will-change: background-image; */
+	position: relative;
+	background: none;
+	overflow: hidden;
+}
+
+.domains::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
+	z-index: 0;
+	pointer-events: none;
+}
+
+.domains-bg {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+	opacity: 0;
+	transition: opacity 0.8s ease-in-out;
+	will-change: opacity;
+	z-index: -1;
+	transform: translateZ(0);
+}
+
+.domains-bg.current {
+	opacity: 1;
+	background: url("../assets/four-domain.jpg");
+}
+
+.domains-bg.next {
+	opacity: 0;
+}
+
+.domains .container {
+	position: relative;
+	z-index: 1;
 }
 
 /* Background Image Animation - Smooth fade effect */
@@ -1023,9 +1063,9 @@
 	align-items: center;
 	text-align: center;
 	/* gap: 16px; */
-	max-width: 1100px;
+	/* max-width: 1100px; */
 	width: 100%;
-	/* margin-bottom: 60px; */
+	margin-bottom: -10px;
 }
 
 /* Title & Subtitle */
@@ -1038,7 +1078,7 @@
 }
 
 .subtitle {
-	font-weight: 700;
+	font-weight: 400;
 	font-size: 24px;
 	line-height: 150%;
 	color: #f6dddc;
@@ -1095,7 +1135,7 @@
 	position: absolute;
 	top: 50px;
 	bottom: 0;
-	width: 2px;
+	width: 1px;
 	background: linear-gradient(
 		180deg,
 		rgba(69, 69, 69, 0) 0%,
@@ -1112,15 +1152,15 @@
 }
 
 /* Enable ONLY the left border on the first card */
-.industry-card:first-child::before {
+/* .industry-card:first-child::before {
 	display: block;
 	left: 0;
-}
-
-/* .industry-card:first-child::before,
-.industry-card:last-child::after {
-	display: none;
 } */
+
+.industry-card:first-child::before,
+.industry-card:last-child::after {
+	display: block;
+}
 
 /* =========================
    Front & Hover States
@@ -1134,10 +1174,10 @@
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-	/* padding: 0 20px; */
+	padding: 0 20px;
 	text-align: center;
 	gap: 10px;
-	margin-bottom: 2rem;
+	padding-bottom: 4rem;
 }
 
 .industry-front {
@@ -1354,17 +1394,17 @@
 }
 
 .proven-tech-slide-title {
-	font-size: 48px;
+	font-size: 47px;
 	font-weight: 700;
 	margin-bottom: 20px;
 	transition: none; /* direct change */
 }
 
 .proven-tech-slide-description {
-	font-size: 32px;
+	font-size: 31px;
 	line-height: 1.5;
 	color: #d4d4d4;
-	max-width: 800px;
+	max-width: 900px;
 	transition: none; /* direct change */
 }
 
@@ -1388,12 +1428,35 @@
 	align-items: center;
 	padding: 50px 20px 60px;
 	cursor: pointer;
-	background: linear-gradient(
+	/* background: linear-gradient(
 		180deg,
 		rgba(21, 0, 49, 0) 60%,
 		rgba(21, 69, 111, 0.7) 100%
-	);
+	); */
 	transition: background 0.6s ease;
+	position: relative;
+}
+
+.proven-tech-card::before,
+.proven-tech-card::after {
+	content: "";
+	position: absolute;
+	top: 42%;
+	bottom: 0;
+	width: 1px;
+	background: linear-gradient(
+		180deg,
+		rgba(69, 69, 69, 0) 0%,
+		rgba(171, 171, 171, 0.3) 100%
+	);
+}
+
+.proven-tech-card::before {
+	left: 0;
+}
+
+.proven-tech-card::after {
+	right: 0;
 }
 
 .proven-tech-card img {
@@ -1420,10 +1483,15 @@
 }
 
 .proven-tech-card.active {
-	background: linear-gradient(
+	/* background: linear-gradient(
 		180deg,
 		rgba(21, 0, 49, 0) 40%,
 		rgba(21, 69, 111, 0.9) 100%
+	); */
+	background: linear-gradient(
+		180deg,
+		rgba(21, 0, 49, 0) 58.23%,
+		rgba(21, 69, 111, 0.7) 100%
 	);
 }
 

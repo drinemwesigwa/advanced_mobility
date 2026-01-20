@@ -37,9 +37,9 @@ const translations = {
 		legal: "Legal & Compliance",
 		nav_ourStory: "Our Story",
 		nav_oneEcosystem: "One Ecosystem",
-		nav_infrastructure: "Infrastructure",
-		nav_capabilities: "Capabilities",
-
+		nav_infrastructure: "The Operating Network",
+		nav_capabilities: "National Value",
+		nav_proven_technologies: "Proven Technology",
 		search_placeholder: "Search",
 		partner_portal: "Partner Portal",
 		lang_short: "EN",
@@ -275,6 +275,104 @@ const translations = {
 	ar: arTranslations,
 };
 
+const slides = [
+	{
+		background: "assets/hero1.png",
+		title: { en: "Architecting the Sky.", ar: "هندسة السماء." },
+		subtitle: { en: "Enabling the Future.", ar: "تمكين المستقبل." },
+		flip: false,
+	},
+	{
+		background: "assets/hero2.jpg",
+		title: { en: "Advanced Air Mobility", ar: "التنقل الجوي المتقدم" },
+		subtitle: { en: "The Infrastructure Behind", ar: "البنية التحتية وراءه" },
+		flip: true,
+	},
+	{
+		background: "assets/hero3.jpg",
+		title: { en: "Mobility Ecosystem", ar: "نظام التنقل" },
+		subtitle: {
+			en: "The Region's Integrated",
+			ar: "النظام المتكامل في المنطقة",
+		},
+		flip: true,
+	},
+];
+let current = 0;
+
+// Preload hero images for faster display
+function preloadHeroImages() {
+	slides.forEach((slide) => {
+		const img = new Image();
+		img.src = slide.background;
+	});
+}
+
+function initTopHeroSection() {
+	// Preload all hero images immediately
+	preloadHeroImages();
+
+	let currentIndex = 0;
+	let currentBg = document.querySelector(".hero-bg.current");
+	let nextBg = document.querySelector(".hero-bg.next");
+	let heroTextInner = document.getElementById("hero-text-inner");
+	let titleEl = document.getElementById("hero-title");
+	let subtitleEl = document.getElementById("hero-subtitle");
+
+	// Function to show a slide
+	function showSlide(index) {
+		// Use the global currentLang variable that's already set in main.js
+		const slide = slides[index];
+
+		heroTextInner.style.opacity = 0;
+
+		setTimeout(() => {
+			nextBg.style.backgroundImage = `url(${slide.background})`;
+			nextBg.style.opacity = 1;
+
+			// Set text based on currentLang
+			titleEl.textContent = slide.title[currentLang];
+			subtitleEl.textContent = slide.subtitle[currentLang];
+
+			heroTextInner.style.flexDirection = slide.flip
+				? "column-reverse"
+				: "column";
+			heroTextInner.style.opacity = 1;
+
+			setTimeout(() => {
+				currentBg.style.backgroundImage = nextBg.style.backgroundImage;
+				currentBg.style.opacity = 1;
+				nextBg.style.opacity = 0;
+			}, 1500);
+		}, 400);
+	}
+
+	// Auto-slide every 5 seconds
+	setInterval(() => {
+		currentIndex = (currentIndex + 1) % slides.length;
+		showSlide(currentIndex); // always uses currentLang
+	}, 5000);
+
+	// Initial slide
+	showSlide(currentIndex);
+
+	// Register callback to update hero when language changes
+	window.updateHeroLanguage = function () {
+		const slide = slides[currentIndex];
+		titleEl.textContent = slide.title[currentLang];
+		subtitleEl.textContent = slide.subtitle[currentLang];
+	};
+
+	// Also update immediately in case page was loaded with non-English language
+	window.updateHeroLanguage();
+
+	// Auto-slide every 5 seconds
+	setInterval(() => {
+		currentIndex = (currentIndex + 1) % slides.length;
+		showSlide(currentIndex); // always uses currentLang
+	}, 5000);
+}
+
 // Language switching functionality
 function updateLanguage(lang) {
 	currentLang = lang;
@@ -371,25 +469,91 @@ function closeMobileMenu() {
 
 // Fleet Explorer tab functionality
 function initFleetTabs() {
+	// Fleet Explorer Dropdown & Tab Management
 	const tabButtons = document.querySelectorAll(".tab-button");
+	const dropdownItems = document.querySelectorAll(".dropdown-item");
 	const tabContents = document.querySelectorAll(".tab-content");
+	const fleetDropdown = document.getElementById("fleet-dropdown");
+	let dropdownOpen = false;
 
+	const switchTab = (tabId) => {
+		// Remove active class from all dropdown items and contents
+		dropdownItems.forEach((item) => item.classList.remove("active"));
+		tabContents.forEach((content) => content.classList.remove("active"));
+
+		// Find and activate the corresponding dropdown item
+		const activeItem = document.querySelector(`[data-tab="${tabId}"]`);
+		if (activeItem) {
+			activeItem.classList.add("active");
+		}
+
+		// Show corresponding content
+		const targetContent = document.getElementById(tabId);
+		if (targetContent) {
+			targetContent.classList.add("active");
+		}
+	};
+
+	const toggleDropdown = () => {
+		if (dropdownOpen) {
+			fleetDropdown.classList.remove("open");
+			dropdownOpen = false;
+		} else {
+			fleetDropdown.classList.add("open");
+			dropdownOpen = true;
+		}
+	};
+
+	const closeDropdown = () => {
+		fleetDropdown.classList.remove("open");
+		dropdownOpen = false;
+	};
+
+	// Tab button click handlers - both tabs toggle the same dropdown
 	tabButtons.forEach((button) => {
 		button.addEventListener("click", () => {
-			// Remove active class from all buttons and contents
-			tabButtons.forEach((btn) => btn.classList.remove("active"));
-			tabContents.forEach((content) => content.classList.remove("active"));
+			toggleDropdown();
+		});
 
-			// Add active class to clicked button
-			button.classList.add("active");
-
-			// Show corresponding content
-			const tabId = button.getAttribute("data-tab");
-			const targetContent = document.getElementById(tabId);
-			if (targetContent) {
-				targetContent.classList.add("active");
+		// Keyboard support
+		button.addEventListener("keydown", (e) => {
+			if (e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
+				button.click();
 			}
 		});
+	});
+
+	// Dropdown item click handlers
+	dropdownItems.forEach((item) => {
+		item.addEventListener("click", () => {
+			const tabId = item.getAttribute("data-tab");
+			switchTab(tabId);
+			closeDropdown();
+		});
+
+		// Keyboard support
+		item.addEventListener("keydown", (e) => {
+			if (e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
+				item.click();
+			}
+		});
+	});
+
+	// Close dropdown when clicking outside
+	document.addEventListener("click", (e) => {
+		const isClickInsideFleetTabs = document.querySelector(".fleet-tabs")?.contains(e.target);
+		if (!isClickInsideFleetTabs && dropdownOpen) {
+			closeDropdown();
+		}
+	});
+
+	// Keyboard navigation
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && dropdownOpen) {
+			closeDropdown();
+		}
 	});
 }
 
@@ -567,7 +731,6 @@ function initVideoAutoplay() {
 // Keyboard navigation
 function initKeyboardNavigation() {
 	document.addEventListener("keydown", (e) => {
-		debugger;
 		// Close mobile menu with Escape key
 		if (e.key === "Escape") {
 			closeMobileMenu();
@@ -814,7 +977,6 @@ const FALLBACK_INDUSTRIES = [
 async function initCTAForm() {
 	const industrySelect = document.getElementById("industry");
 	const emailInput = document.getElementById("email");
-	const ctaForm = document.querySelector(".cta-form");
 	const charCount = document.getElementById("char-count");
 	const useCaseTextarea = document.getElementById("use-case");
 
@@ -852,14 +1014,6 @@ async function initCTAForm() {
 			) {
 				validateField(useCaseTextarea);
 			}
-		});
-	}
-
-	// Form submission
-	if (ctaForm) {
-		ctaForm.addEventListener("submit", (e) => {
-			e.preventDefault();
-			submitCTAForm();
 		});
 	}
 }
@@ -904,80 +1058,6 @@ function validateField(field) {
 	return isValid;
 }
 
-// Submit CTA Form
-async function submitCTAForm() {
-	const industryField = document.getElementById("industry");
-	const emailField = document.getElementById("email");
-	const useCaseField = document.getElementById("use-case");
-
-	// Validate all fields
-	const isIndustryValid = validateField(industryField);
-	const isEmailValid = validateField(emailField);
-	const isUseCaseValid = validateField(useCaseField);
-
-	if (!isIndustryValid || !isEmailValid || !isUseCaseValid) {
-		showAlert(
-			translations[currentLang].validation_error ||
-				"Please fill in all required fields correctly",
-			"error",
-		);
-		return;
-	}
-
-	const industry = industryField.value;
-	const email = emailField.value;
-	const useCase = useCaseField.value;
-
-	try {
-		const submitButton = document.querySelector(".cta-form .btn");
-		const originalText = submitButton.textContent;
-		submitButton.disabled = true;
-		submitButton.textContent =
-			translations[currentLang].form_submitting || "Submitting...";
-
-		// Replace this with your actual API endpoint
-		const API_URL = "YOUR_API_ENDPOINT_HERE/submit-demo";
-
-		const response = await fetch(API_URL, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				industry: industry,
-				email: email,
-				useCase: useCase,
-				submittedAt: new Date().toISOString(),
-			}),
-		});
-
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-
-		const data = await response.json();
-
-		// Success
-		showAlert(translations[currentLang].form_success, "success");
-
-		// Reset form
-		document.querySelector(".cta-form").reset();
-		document.getElementById("char-count").textContent = "0/100";
-
-		// Restore button
-		submitButton.disabled = false;
-		submitButton.textContent = originalText;
-	} catch (error) {
-		console.error("Error submitting form:", error);
-		showAlert(translations[currentLang].form_error, "error");
-
-		// Restore button
-		const submitButton = document.querySelector(".cta-form .btn");
-		submitButton.disabled = false;
-		submitButton.textContent = originalText;
-	}
-}
-
 // SweetAlert Helper Function
 function showAlert(message, type = "info") {
 	// Check if SweetAlert2 is loaded
@@ -998,6 +1078,24 @@ function showAlert(message, type = "info") {
 		} else {
 			alert("ℹ " + message);
 		}
+	}
+}
+
+// Initialize bottom section with fleet tabs and CTA form
+function initBottomSection() {
+	if (!bottomLoaded) {
+		fetch("partials/bottom.html")
+			.then((res) => res.text())
+			.then((data) => {
+				document.getElementById("bottom-section").innerHTML = data;
+				bottomLoaded = true;
+				// Initialize fleet tabs
+				initFleetTabs();
+				// Initialize CTA form
+				setTimeout(() => initCTAForm(), 100);
+				initBottomLanguage();
+			})
+			.catch((error) => console.error("Error loading bottom section:", error));
 	}
 }
 
@@ -1030,15 +1128,27 @@ function updateProvenTechContent(
 	}
 }
 
+// Initialize top section with fleet tabs and CTA form
+function initTopSection() {
+	if (!topLoaded) {
+		fetch("partials/top.html")
+			.then((res) => res.text())
+			.then((data) => {
+				document.getElementById("top-section").innerHTML = data;
+				topLoaded = true;
+				initTopPart();
+				initTopProvenTechnology();
+				initTopLanguage();
+			})
+			.catch((error) => console.error("Error loading top section:", error));
+	}
+}
+
 // Load bottom & top section on page load or when needed
 document.addEventListener("DOMContentLoaded", () => {
-	// Initialize fleet tabs
-	initFleetTabs();
-	// Initialize CTA form
-	setTimeout(() => initCTAForm(), 100);
-
 	initTopHeroSection();
-	initTopProvenTechnology();
+	initTopSection();
+	initBottomSection();
 });
 
 // Error handling

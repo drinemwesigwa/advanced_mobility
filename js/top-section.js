@@ -1,104 +1,5 @@
-const slides = [
-	{
-		background: "assets/autoflight dronereal.jpg",
-		title: { en: "Architecting the Sky.", ar: "هندسة السماء." },
-		subtitle: { en: "Enabling the Future.", ar: "تمكين المستقبل." },
-		flip: false,
-	},
-	{
-		background: "assets/hero2.jpg",
-		title: { en: "Advanced Air Mobility", ar: "التنقل الجوي المتقدم" },
-		subtitle: { en: "The Infrastructure Behind", ar: "البنية التحتية وراءه" },
-		flip: true,
-	},
-	{
-		background: "assets/hero3.jpg",
-		title: { en: "Mobility Ecosystem", ar: "نظام التنقل" },
-		subtitle: {
-			en: "The Region's Integrated",
-			ar: "النظام المتكامل في المنطقة",
-		},
-		flip: true,
-	},
-];
-let current = 0;
-
-// Preload hero images for faster display
-function preloadHeroImages() {
-	slides.forEach((slide) => {
-		const img = new Image();
-		img.src = slide.background;
-	});
-}
-
-function initTopHeroSection() {
-	// Preload all hero images immediately
-	preloadHeroImages();
-
-	let currentIndex = 0;
-	let currentBg = document.querySelector(".hero-bg.current");
-	let nextBg = document.querySelector(".hero-bg.next");
-	let heroTextInner = document.getElementById("hero-text-inner");
-	let titleEl = document.getElementById("hero-title");
-	let subtitleEl = document.getElementById("hero-subtitle");
-
-	// Function to show a slide
-	function showSlide(index) {
-		// Use the global currentLang variable that's already set in main.js
-		const slide = slides[index];
-
-		heroTextInner.style.opacity = 0;
-
-		setTimeout(() => {
-			nextBg.style.backgroundImage = `
-      linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-      url(${slide.background})
-    `;
-			nextBg.style.opacity = 1;
-
-			// Set text based on currentLang
-			titleEl.textContent = slide.title[currentLang];
-			subtitleEl.textContent = slide.subtitle[currentLang];
-
-			heroTextInner.style.flexDirection = slide.flip
-				? "column-reverse"
-				: "column";
-			heroTextInner.style.opacity = 1;
-
-			setTimeout(() => {
-				currentBg.style.backgroundImage = nextBg.style.backgroundImage;
-				currentBg.style.opacity = 1;
-				nextBg.style.opacity = 0;
-			}, 1500);
-		}, 400);
-	}
-
-	// Auto-slide every 5 seconds
-	setInterval(() => {
-		currentIndex = (currentIndex + 1) % slides.length;
-		showSlide(currentIndex); // always uses currentLang
-	}, 5000);
-
-	// Initial slide
-	showSlide(currentIndex);
-
-	// Register callback to update hero when language changes
-	window.updateHeroLanguage = function () {
-		const slide = slides[currentIndex];
-		titleEl.textContent = slide.title[currentLang];
-		subtitleEl.textContent = slide.subtitle[currentLang];
-	};
-
-	// Also update immediately in case page was loaded with non-English language
-	window.updateHeroLanguage();
-
-	// Auto-slide every 5 seconds
-	setInterval(() => {
-		currentIndex = (currentIndex + 1) % slides.length;
-		showSlide(currentIndex); // always uses currentLang
-	}, 5000);
-
-	const pathsData = [
+function initTopPart() {
+	pathsData = [
 		{
 			id: "path1",
 			d: "M 100 80 Q 200 120 350 100 T 550 150",
@@ -229,7 +130,10 @@ function initTopHeroSection() {
 	// Domain card background image change on hover - smooth transition
 	const domainsSection = document.querySelector(".domains");
 	const domainCards = document.querySelectorAll(".domain-card");
-	const defaultBgImage = "url(assets/four-domain.jpg)";
+	const defaultBgImage = "assets/four-domain.jpg";
+
+	let currentBg = document.querySelector(".domains-bg.current");
+	let nextBg = document.querySelector(".domains-bg.next");
 
 	// Preload domain card background images
 	function preloadDomainImages() {
@@ -253,19 +157,28 @@ function initTopHeroSection() {
 		domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
 	}
 
+	function showSlide(bgImage) {
+		// Set the next background image
+		nextBg.style.backgroundImage = `url(${bgImage})`;
+
+		// Trigger fade
+		nextBg.style.opacity = 1;
+		currentBg.style.opacity = 0;
+
+		// Swap references
+		[currentBg, nextBg] = [nextBg, currentBg];
+	}
+
+	// Hover events
 	domainCards.forEach((card) => {
-		const bgImage = card.getAttribute("data-bg");
+		const bg = card.dataset.bg;
 
 		card.addEventListener("mouseenter", () => {
-			if (domainsSection && bgImage) {
-				domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${bgImage})`;
-			}
+			if (bg) showSlide(bg);
 		});
 
 		card.addEventListener("mouseleave", () => {
-			if (domainsSection) {
-				domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
-			}
+			showSlide(defaultBgImage);
 		});
 	});
 }
@@ -371,3 +284,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 });
+
+function initTopLanguage() {
+	// Load preferred language
+	const savedLang = localStorage.getItem("preferred-language");
+	if (savedLang && translations[savedLang]) {
+		currentLang = savedLang;
+	}
+
+	// Initialize language
+	updateLanguage(currentLang);
+}
