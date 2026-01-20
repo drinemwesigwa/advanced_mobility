@@ -152,11 +152,6 @@ function initTopPart() {
 	// Preload images immediately
 	preloadDomainImages();
 
-	// Set default background on page load
-	if (domainsSection) {
-		domainsSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ${defaultBgImage}`;
-	}
-
 	function showSlide(bgImage) {
 		// Set the next background image
 		nextBg.style.backgroundImage = `url(${bgImage})`;

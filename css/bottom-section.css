@@ -73,6 +73,89 @@
 		gap: 16px;
 		padding: 0px 20px;
 	}
+
+	/* Show fleet tabs as flex container for dropdown only */
+	.fleet-tabs {
+		display: flex !important;
+		border-bottom: none !important;
+		padding: 0 !important;
+		margin-bottom: 16px !important;
+		gap: 0 !important;
+	}
+
+	.tab-button {
+		display: none !important;
+	}
+
+	.tab-group {
+		display: contents !important;
+	}
+
+	.tab-dropdown {
+		display: flex !important;
+		position: static !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		gap: 8px !important;
+		padding: 0 !important;
+		background: none !important;
+		border: none !important;
+		box-shadow: none !important;
+		opacity: 1 !important;
+		transform: none !important;
+		pointer-events: auto !important;
+		width: 100% !important;
+		min-width: auto !important;
+		max-width: 100% !important;
+	}
+
+	.dropdown-column {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		gap: 8px !important;
+		padding: 0 !important;
+		flex: 0 1 auto !important;
+		align-items: center !important;
+		width: 100% !important;
+	}
+
+	.dropdown-divider {
+		display: none !important;
+	}
+
+	.dropdown-item {
+		background: #f0f0f0 !important;
+		border: 1px solid #d0d0d0 !important;
+		border-radius: 8px !important;
+		padding: 10px 14px !important;
+		font-size: 13px !important;
+		height: auto !important;
+		flex: 0 1 auto !important;
+		white-space: nowrap !important;
+	}
+
+	.dropdown-item.active {
+		background: #380c0b !important;
+		color: #ffffff !important;
+		border-color: #380c0b !important;
+	}
+
+	.dropdown-item:hover {
+		background: #e8e8e8 !important;
+	}
+
+	.dropdown-item.active:hover {
+		background: #380c0b !important;
+	}
+
+	.aircraft-specs-header {
+		display: flex !important;
+	}
+
+	.tab-content:not(.active) .aircraft-specs-header {
+		display: none !important;
+	}
 }
 
 @media (max-width: 480px) {
@@ -98,16 +181,11 @@
 	}
 
 	.fleet-tabs {
-		padding: 0.5rem 0 0 0;
-		gap: 0.5rem;
-		margin-bottom: 1rem;
-		overflow-x: auto;
-		overflow-y: visible;
-		-webkit-overflow-scrolling: touch;
-		scrollbar-width: none;
-		-ms-overflow-style: none;
-		position: relative;
-		z-index: 10;
+		display: flex !important;
+		border-bottom: none !important;
+		padding: 0 !important;
+		margin-bottom: 16px !important;
+		gap: 0 !important;
 	}
 
 	.fleet-tabs::-webkit-scrollbar {
@@ -115,12 +193,7 @@
 	}
 
 	.tab-button {
-		padding: 8px 12px;
-		font-size: 13px;
-		width: auto;
-		min-width: 100px;
-		height: auto;
-		padding: 8px 12px;
+		display: none !important;
 	}
 
 	.tab-button.active::after {
@@ -129,20 +202,64 @@
 	}
 
 	.tab-dropdown {
-		min-width: 220px;
-		max-width: calc(100vw - 30px);
-		top: calc(100% + 0.5rem);
-		left: 0;
-		right: auto;
-		z-index: 1000;
-		position: absolute;
+		display: flex !important;
+		position: static !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		gap: 8px !important;
+		padding: 0 !important;
+		background: none !important;
+		border: none !important;
+		box-shadow: none !important;
+		opacity: 1 !important;
+		transform: none !important;
+		pointer-events: auto !important;
+		width: 100% !important;
+		min-width: auto !important;
+		max-width: 100% !important;
 	}
 
 	.tab-group {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		z-index: 10;
+		display: contents !important;
+	}
+
+	.dropdown-column {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		gap: 8px !important;
+		padding: 0 !important;
+		flex: none !important;
+		align-items: center !important;
+	}
+
+	.dropdown-item {
+		background: #f0f0f0 !important;
+		border: 1px solid #d0d0d0 !important;
+		border-radius: 8px !important;
+		padding: 10px 14px !important;
+		font-size: 13px !important;
+		height: auto !important;
+		flex: 0 1 auto !important;
+		white-space: nowrap !important;
+	}
+
+	.dropdown-item.active {
+		background: #380c0b !important;
+		color: #ffffff !important;
+		border-color: #380c0b !important;
+	}
+
+	.dropdown-item:hover {
+		background: #e8e8e8 !important;
+	}
+
+	.dropdown-item.active:hover {
+		background: #380c0b !important;
+	}
+
+	.dropdown-divider {
+		display: none !important;
 	}
 
 	.fleet-details {
@@ -192,13 +309,17 @@
 	}
 
 	.aircraft-specs-header {
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
 		margin-bottom: 0.75rem;
 		border-bottom: 1px solid #e5e5e5;
-		padding-bottom: 0.5rem;
+		padding: 12px 0;
+		background: none;
 	}
 
-	.aircraft-count {
-		font-size: 1.25rem;
+	.tab-content:not(.active) .aircraft-specs-header {
+		display: none !important;
 	}
 
 	.specs-grid {
@@ -266,7 +387,6 @@
 		padding: 0 0 16px 0;
 	}
 }
-
 
 @media (max-width: 1200px) {
 	.partners-logos {
@@ -757,10 +877,10 @@
 .fleet-tabs {
 	display: flex;
 	justify-content: flex-start;
-	gap: 2rem;
-	margin-bottom: 1.5rem;
+	/* gap: 2rem; */
+	/* margin-bottom: 1.5rem; */
 	border-bottom: 1px solid var(--border);
-	padding: 1rem 0 0 1rem;
+	/* padding: 1rem 0 0 1rem; */
 	position: relative;
 }
 
@@ -790,7 +910,6 @@
 	padding: 5px 5px;
 	font-size: 20px;
 	font-weight: 400;
-	font-family: 'SF Pro';
 	color: #737373;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -820,7 +939,7 @@
 }
 
 .tab-button.active {
-	color: #380C0B;
+	color: #380c0b;
 	font-weight: 700;
 	line-height: 150%;
 	display: flex;
@@ -831,7 +950,7 @@
 	width: 148px;
 	height: 50px;
 	text-decoration: underline;
-	text-decoration-color: #380C0B;
+	text-decoration-color: #380c0b;
 	text-decoration-thickness: 2px;
 	text-underline-offset: 8px;
 }
@@ -843,12 +962,18 @@
 .tab-dropdown {
 	position: absolute;
 	top: calc(100% + 0.1rem);
-	left: 0;
-	background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
-	border-right: 0.5px solid #BFBFBF;
-	border-bottom: 0.5px solid #BFBFBF;
-	border-radius: 0px 0 0px 20px;
-	box-shadow: inset 0px -4px 4px rgba(255, 255, 255, 0.15), 0 4px 20px rgba(0, 0, 0, 0.12);
+	left: 1vh;
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.6) 0%,
+		rgba(255, 255, 255, 0.6) 100%
+	);
+	border-right: 0.5px solid #bfbfbf;
+	border-bottom: 0.5px solid #bfbfbf;
+	border-radius: 0px 0 20px 20px;
+	box-shadow:
+		inset 0px -4px 4px rgba(255, 255, 255, 0.15),
+		0 4px 20px rgba(0, 0, 0, 0.12);
 	backdrop-filter: blur(12px);
 	min-width: 316px;
 	max-width: 90vw;
@@ -902,7 +1027,6 @@
 	background: none;
 	border: none;
 	padding: 0;
-	font-family: 'SF Pro';
 	font-style: normal;
 	font-weight: 510;
 	font-size: 16px;
@@ -920,12 +1044,12 @@
 }
 
 .dropdown-item:hover {
-	color: #380C0B;
+	color: #380c0b;
 	font-weight: 600;
 }
 
 .dropdown-item:focus {
-	outline: 2px solid #380C0B;
+	outline: 2px solid #380c0b;
 	outline-offset: 2px;
 }
 
@@ -953,7 +1077,7 @@
 	width: 100%;
 	max-width: 1300px;
 	min-height: auto;
-	background: #FFFFFF;
+	background: #ffffff;
 	border-radius: 18px;
 	margin: 0 auto;
 	margin-bottom: 30px;
@@ -965,13 +1089,13 @@
 	width: 100%;
 	max-width: 1240px;
 	min-height: auto;
-	border: 0.5px solid #BFBFBF;
+	border: 0.5px solid #bfbfbf;
 	border-radius: 16px;
 	background: #ffffff;
 	margin: 0 auto;
 }
 
-.fleet-explorer-footer  {
+.fleet-explorer-footer {
 	display: flex;
 }
 
@@ -1060,12 +1184,16 @@
 .spec-item:nth-child(even) .spec-label,
 .spec-item:nth-child(even) .spec-value {
 	background-color: #efefef;
-	padding: 0.75rem 1rem;
+	padding: 0.7rem 1rem;
 	border-radius: 10px;
 	margin: -0.5rem -1rem;
-	padding: 0.75rem 1rem;
 }
-
+.spec-item:nth-child(odd) .spec-label,
+.spec-item:nth-child(odd) .spec-value {
+	padding: 0.7rem 1rem;
+	border-radius: 10px;
+	margin: -0.5rem -1rem;
+}
 .spec-label {
 	font-size: 0.75rem;
 	color: var(--muted);
@@ -1252,7 +1380,7 @@
 	gap: 30px;
 	width: 861px;
 	height: 290px;
-	left: calc(50% - 861px/2 - 203.5px);
+	left: calc(50% - 861px / 2 - 203.5px);
 	top: 126px;
 }
 
@@ -1330,7 +1458,7 @@ body.rtl .shaping-content {
 	line-height: 120%;
 	display: flex;
 	align-items: center;
-	color: #FFFFFF;
+	color: #ffffff;
 	margin: 0;
 	flex: none;
 	order: 0;
@@ -1377,7 +1505,7 @@ body.rtl .shaping-content {
 	padding: 34.33px 2px 34.34px;
 	width: 90px;
 	height: 87.34px;
-	border: 2px solid #FFFFFF;
+	border: 2px solid #ffffff;
 	border-radius: 140px;
 	background: transparent;
 	cursor: pointer;
@@ -1451,14 +1579,13 @@ body.rtl .shaping-content {
 	margin: 0 auto;
 	width: 635px;
 	height: 20px;
-	font-family: 'SF Pro';
 	font-style: normal;
 	font-weight: 700;
 	font-size: 14px;
 	line-height: 140%;
 	display: flex;
 	align-items: center;
-	color: #FFFFFF;
+	color: #ffffff;
 	flex: none;
 	order: 0;
 	flex-grow: 0;
@@ -1493,7 +1620,6 @@ body.rtl .shaping-content {
 	margin: 0 auto;
 	width: 184px;
 	height: 20px;
-	/* font-family: 'SF Pro'; */
 	font-style: normal;
 	font-weight: 700;
 	font-size: 14px;
@@ -1502,7 +1628,7 @@ body.rtl .shaping-content {
 	align-items: center;
 	text-decoration-line: underline;
 	text-transform: uppercase;
-	color: #FFFFFF;
+	color: #ffffff;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	flex: none;
@@ -2413,10 +2539,10 @@ body.rtl .shaping-content {
 	}
 
 	.tab-button.active {
-		color: #380C0B;
+		color: #380c0b;
 		font-weight: 700;
 		text-decoration: underline;
-		text-decoration-color: #380C0B;
+		text-decoration-color: #380c0b;
 		text-decoration-thickness: 2px;
 		text-underline-offset: 8px;
 	}
@@ -2436,7 +2562,7 @@ body.rtl .shaping-content {
 	}
 
 	.aircraft-showcase {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 2fr 1fr;
 		gap: 3rem;
 		align-items: stretch;
 	}

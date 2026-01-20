@@ -328,6 +328,14 @@ function initTopHeroSection() {
 
 		setTimeout(() => {
 			nextBg.style.backgroundImage = `url(${slide.background})`;
+			nextBg.style.backgroundSize = "cover";
+
+			// Match CSS logic explicitly
+			if (window.innerWidth >= 1200) {
+				nextBg.style.backgroundPosition = "top center";
+			} else {
+				nextBg.style.backgroundPosition = "center";
+			}
 			nextBg.style.opacity = 1;
 
 			// Set text based on currentLang
@@ -339,22 +347,47 @@ function initTopHeroSection() {
 				: "column";
 			heroTextInner.style.opacity = 1;
 
+			// Update the dots after the transition
+			updateDots(index);
+
 			setTimeout(() => {
 				currentBg.style.backgroundImage = nextBg.style.backgroundImage;
+				currentBg.style.backgroundSize = "cover";
+				currentBg.style.backgroundPosition = nextBg.style.backgroundPosition;
 				currentBg.style.opacity = 1;
 				nextBg.style.opacity = 0;
 			}, 1500);
 		}, 400);
 	}
 
-	// Auto-slide every 5 seconds
-	setInterval(() => {
-		currentIndex = (currentIndex + 1) % slides.length;
-		showSlide(currentIndex); // always uses currentLang
-	}, 5000);
-
 	// Initial slide
 	showSlide(currentIndex);
+	// Auto-slide every 5 seconds
+	// setInterval(() => {
+	// 	currentIndex = (currentIndex + 1) % slides.length;
+	// 	showSlide(currentIndex); // always uses currentLang
+	// }, 5000);
+
+	const dots = document.querySelectorAll(".hero-dots .dot");
+
+	function updateDots(index) {
+		dots.forEach((dot, i) => {
+			if (i === index) {
+				dot.src = "assets/Selected.svg";
+				dot.classList.add("active");
+			} else {
+				dot.src = "assets/Default.svg";
+				dot.classList.remove("active");
+			}
+		});
+	}
+
+	dots.forEach((dot) => {
+		dot.addEventListener("click", () => {
+			currentIndex = parseInt(dot.dataset.index);
+			showSlide(currentIndex);
+		});
+	});
 
 	// Register callback to update hero when language changes
 	window.updateHeroLanguage = function () {
@@ -469,90 +502,60 @@ function closeMobileMenu() {
 
 // Fleet Explorer tab functionality
 function initFleetTabs() {
-	// Fleet Explorer Dropdown & Tab Management
 	const tabButtons = document.querySelectorAll(".tab-button");
 	const dropdownItems = document.querySelectorAll(".dropdown-item");
 	const tabContents = document.querySelectorAll(".tab-content");
-	const fleetDropdown = document.getElementById("fleet-dropdown");
-	let dropdownOpen = false;
+	const dropdown = document.getElementById("fleet-dropdown");
 
-	const switchTab = (tabId) => {
-		// Remove active class from all dropdown items and contents
-		dropdownItems.forEach((item) => item.classList.remove("active"));
-		tabContents.forEach((content) => content.classList.remove("active"));
-
-		// Find and activate the corresponding dropdown item
-		const activeItem = document.querySelector(`[data-tab="${tabId}"]`);
-		if (activeItem) {
-			activeItem.classList.add("active");
-		}
-
-		// Show corresponding content
-		const targetContent = document.getElementById(tabId);
-		if (targetContent) {
-			targetContent.classList.add("active");
-		}
-	};
-
-	const toggleDropdown = () => {
-		if (dropdownOpen) {
-			fleetDropdown.classList.remove("open");
-			dropdownOpen = false;
-		} else {
-			fleetDropdown.classList.add("open");
-			dropdownOpen = true;
-		}
-	};
-
-	const closeDropdown = () => {
-		fleetDropdown.classList.remove("open");
-		dropdownOpen = false;
-	};
-
-	// Tab button click handlers - both tabs toggle the same dropdown
+	// Handle main tab group buttons (Ehang Mea, GOVY)
 	tabButtons.forEach((button) => {
 		button.addEventListener("click", () => {
-			toggleDropdown();
-		});
-
-		// Keyboard support
-		button.addEventListener("keydown", (e) => {
-			if (e.key === "Enter" || e.key === " ") {
-				e.preventDefault();
-				button.click();
+			const tabGroup = button.getAttribute("data-tab-group");
+			
+			// Remove active class from all buttons
+			tabButtons.forEach((btn) => btn.classList.remove("active"));
+			
+			// Add active class to clicked button
+			button.classList.add("active");
+			
+			// Toggle dropdown visibility
+			if (dropdown) {
+				dropdown.classList.toggle("open");
 			}
 		});
 	});
 
-	// Dropdown item click handlers
+	// Handle dropdown items (aircraft selection)
 	dropdownItems.forEach((item) => {
 		item.addEventListener("click", () => {
 			const tabId = item.getAttribute("data-tab");
-			switchTab(tabId);
-			closeDropdown();
-		});
-
-		// Keyboard support
-		item.addEventListener("keydown", (e) => {
-			if (e.key === "Enter" || e.key === " ") {
-				e.preventDefault();
-				item.click();
+			
+			// Remove active class from all contents
+			tabContents.forEach((content) => content.classList.remove("active"));
+			
+			// Remove active class from all dropdown items
+			dropdownItems.forEach((i) => i.classList.remove("active"));
+			
+			// Add active class to clicked item
+			item.classList.add("active");
+			
+			// Show corresponding content
+			const targetContent = document.getElementById(tabId);
+			if (targetContent) {
+				targetContent.classList.add("active");
+			}
+			
+			// Close dropdown after selection
+			if (dropdown) {
+				dropdown.classList.remove("open");
 			}
 		});
 	});
-
+	
 	// Close dropdown when clicking outside
 	document.addEventListener("click", (e) => {
-		const isClickInsideFleetTabs = document.querySelector(".fleet-tabs")?.contains(e.target);
-		if (!isClickInsideFleetTabs && dropdownOpen) {
-			closeDropdown();
-		}
-	});
-
-	// Keyboard navigation
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape" && dropdownOpen) {
-			closeDropdown();
+		if (dropdown && !e.target.closest(".tab-group") && !e.target.closest(".fleet-tabs")) {
+			dropdown.classList.remove("open");
 		}
 	});
 }
@@ -1149,6 +1152,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	initTopHeroSection();
 	initTopSection();
 	initBottomSection();
+
+	// Header scroll effect
+	const header = document.getElementById("header");
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 50) {
+			header.classList.add("scrolled");
+		} else {
+			header.classList.remove("scrolled");
+		}
+	});
 });
 
 // Error handling
